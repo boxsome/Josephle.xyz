@@ -1,0 +1,7 @@
+@import "../vendor/bourbon/app/assets/stylesheets/bourbon";
+@import "../vendor/neat/app/assets/stylesheets/neat";
+@import "../vendor/sass-mediaqueries/media-queries";
+
+@import "core/_core"; //core variables, base layouts, and mixins
+@import "partials/_partials"; //styles for partial portions of the html
+@import "common/_common"; //common classes/placeholder classes

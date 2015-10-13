@@ -1,0 +1,25 @@
+{
+  "landing-active": true,
+  "project": [
+    {
+      "name": "Boost",
+      "link": "test",
+      "img": "images/boost/Boost_Logo.png"
+    },
+    {
+      "name": "Boxnest2",
+      "link": "test",
+      "img": "images/BN_Tablet.png"
+    },
+    {
+      "name": "Boxnest3",
+      "link": "test",
+      "img": "images/BN_Landing_768.png"
+    },
+    {
+      "name": "Boxnest4",
+      "link": "test",
+      "img": "images/BN_Mobile_Screens.png"
+    }
+  ]
+}

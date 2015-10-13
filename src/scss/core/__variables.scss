@@ -1,0 +1,62 @@
+//colors
+
+$boxnest-yellow:                  #FFC523;
+$boxnest-gray:                    #656866;
+$boxnest-blue:                    #00ACD7;
+
+$content-text-gray:               #404041;
+$nav-bg-gray:                     #C2C7C6;
+$footer-bg-gray:                  #EEEFF1;
+$footer-text-gray:                #B0B3B3;
+
+//paths
+$img-path:                        "../images";
+$font-path:                       "../fonts";
+
+//dimensions
+$main-width:                      1200px;
+$header-height:                   100px;
+$header-mobile-height:            66px;
+$footer-height:                   100px;
+$input-text-width:                450px;
+
+//padding & margins
+$header-horizontal-padding:       105px;
+$footer-horizontal-padding:       100px;
+$footer-vertical-padding:         50px;
+$header-vertical-padding:         50px;
+$mobile-content-padding:       15px;
+
+//font-size
+$base-font-size:                  16px;
+$large-content-font-size-px:      boxnest-convert-pt-px(32);
+$heading-font-size-px:            boxnest-convert-pt-px(40);
+$content-font-size-px:            boxnest-convert-pt-px(21);
+$contact-form-font-size-px:       boxnest-convert-pt-px(20);
+$button-font-size-px:             boxnest-convert-pt-px(16);
+$header-footer-font-size-px:      boxnest-convert-pt-px(14);
+
+//fonts
+$asap: "Asap";
+
+//breakpoints
+$bp1:                             1900px;
+$bp2:                             1800px;
+$bp3:                             1700px;
+$bp4:                             1600px;
+$bp5:                             1500px;
+$bp6:                             1400px;
+$bp7:                             1300px;
+$bp8:                             1200px;
+$bp9:                             1100px;
+$bp10:                            1000px;
+$bp11:                            900px;
+$bp12:                            800px;
+$bp13:                            700px;
+$bp14:                            600px;
+$bp15:                            500px;
+$bp16:                            400px;
+$bp17:                            300px;
+
+//bourbon/neat values
+$default-feature:                 max-width;

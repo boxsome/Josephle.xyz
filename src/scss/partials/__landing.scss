@@ -1,0 +1,57 @@
+.landing {
+
+  &__row {
+    height: 300px;
+    margin: 0 auto;
+    width: $main-width;
+
+    &:nth-child(n+2) {
+      margin-top: 50px;
+    }
+
+    &__project {
+      height: 100%;
+      @include span-columns(4);
+
+      &__img {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 100%;
+        position: relative;
+        width: 100%;
+
+        &:after {
+          content: '';
+          height: 100%;
+          position: absolute;
+          width: 100%;
+
+        }
+
+        &:hover {
+
+          &:after {
+            background: rgba(black, 0.75);
+          }
+
+          .landing__row__project__name {
+            display: block;
+          }
+        }
+
+      }
+
+      &__name {
+        bottom: 25px;
+        color: white;
+        display: none;
+        font-size: 2rem; //change this later
+        left: 25px;
+        position: absolute;
+        z-index: 1;
+      }
+    }
+
+  }
+}

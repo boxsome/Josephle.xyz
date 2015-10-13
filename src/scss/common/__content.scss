@@ -1,0 +1,9 @@
+.default-content {
+  padding-bottom: -#{$footer-height};
+  width: 100%;
+  @include calc(height, "100% - (#{$footer-height} + #{$header-height})");
+
+  @include media($bp8) {
+    @include calc(height, "100% - #{$header-mobile-height}");
+  }
+}

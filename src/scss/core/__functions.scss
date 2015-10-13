@@ -1,0 +1,11 @@
+//converts $toConvert to another unit of measurement using $ratio
+@function boxnest-convert-units($ratio, $toConvert) {
+  @if type-of($ratio) != number or type-of($toConvert) != number {
+    @error "$parameters must be numbers";
+  }
+  @return floor($ratio*$toConvert);
+}
+
+@function boxnest-convert-pt-px($toConvert) {
+  @return boxnest-convert-units(4/3, $toConvert);
+}

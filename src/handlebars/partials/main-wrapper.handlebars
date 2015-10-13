@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script type="text/javascript" src="js/vendor.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+  {{> header}}
+
+    {{#if landing-active}}
+      {{> landing-content}}
+    {{/if}}
+
+    {{#if about-active}}
+      {{> about-content}}
+    {{/if}}
+
+    {{#if services-active}}
+      {{> services-content}}
+    {{/if}}
+
+    {{#if contact-active}}
+      {{> contact-content}}
+    {{/if}}
+
+  {{> footer}}
+  </body>
+</html>
