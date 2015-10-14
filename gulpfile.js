@@ -13,6 +13,7 @@ var _               = require('lodash-node'),
     handlebars      = require("gulp-compile-handlebars"),
     rename          = require("gulp-rename"),
     data            = require("gulp-data"),
+    foreach         = require("gulp-foreach"),
     
     // path config
     PATH_ROOT = __dirname + "/",
@@ -34,7 +35,17 @@ var _               = require('lodash-node'),
     PATH_SRC_HANDLEBARS_PARTIALS = PATH_SRC_HANDLEBARS + "partials",
     PATH_SRC_JSON = PATH_SRC + "json/",
     PATH_SRC_SASS = PATH_SRC + "scss/",
-    PATH_SRC_PROJECTS = PATH_ROOT + "projects/";
+    PATH_SRC_PROJECTS = PATH_ROOT + "projects/",
+
+    //misc
+    handlebarOptions = {
+      ignorePartials: true,
+      batch: ["./src/handlebars/partials/"],
+      helpers: {
+        eq: eq,
+        isMod0: isMod0
+      }
+    };
 
 function isDev(env) {
   return ((env === null) || (env === "dev"));
@@ -107,14 +118,6 @@ gulp.task("fonts", function() {
 });
 
 gulp.task("handlebars", function() {
-  var options = {
-    ignorePartials: true,
-    batch: ["./src/handlebars/partials/"],
-    helpers: {
-      eq: eq,
-      isMod0: isMod0
-    }
-  }
 
   return gulp.plumbedSrc([
     PATH_SRC_HANDLEBARS + "*.handlebars"
@@ -123,7 +126,7 @@ gulp.task("handlebars", function() {
     return require(PATH_SRC_JSON + path.basename(file.path, ".handlebars") + ".json");
   }))
 
-  .pipe(handlebars("", options))
+  .pipe(handlebars("", handlebarOptions))
 
   .pipe(rename(function(path){
     path.extname = ".html";
@@ -145,7 +148,7 @@ gulp.task("img", ["img:common"]);
 
 gulp.task("img:common", function (release) {
   return gulp.plumbedSrc([
-      PATH_SRC_IMG + "**/*" 
+      PATH_SRC_IMG + "**/*"
     ])
     .pipe(plugins.if(isRelease(release), plugins.imagemin({
       optimizationLevel: 2,
@@ -202,6 +205,55 @@ gulp.task("projects:images", function() {
         return path;
     }))
     .pipe(gulp.dest(PATH_BUILD_IMG));
+});
+
+gulp.task("projects:pages", function() {
+  return gulp.plumbedSrc([
+        PATH_SRC_PROJECTS + "*/description.txt"
+    ])
+    .pipe(foreach(function(stream, file) {
+      var json = {},
+        absPath = file.path,
+        absPathSplit = absPath.split("\\"),
+        parentDirectoryName = absPathSplit[absPathSplit.length - 2],
+        imageNames = fs.readdirSync(absPathSplit.slice(0, absPathSplit.length - 1).join("\\") + "\\images").filter(function (name) {
+          return name.match(/^Image\d/);
+        }).sort(); //we only want images in the format Image1, Image2, etc.
+
+        json["project-active"] = true;
+        json["description"] = file.contents.toString();
+        json["name"] = parentDirectoryName;
+        json["img"] = [];
+
+        imageNames.forEach(function(val) {
+          var filePath = "images/" + parentDirectoryName + "/" + val;
+          console.log(filePath);
+          json["img"].push(filePath);
+        });
+        console.log(json);
+      return gulp.plumbedSrc([
+        PATH_SRC_HANDLEBARS + "index.handlebars"
+        ])
+
+        .pipe(handlebars(json, handlebarOptions))
+
+        .pipe(rename(function(path){
+          path.extname = ".html";
+          path.basename = parentDirectoryName;
+        }))
+
+        .pipe(gulp.dest(PATH_BUILD_HTML));
+    }))
+
+
+    .pipe(rename(function(path){
+      path.extname = ".html";
+    }))
+
+    .pipe(plugins.minifyHtml())
+
+    .pipe(gulp.dest(PATH_BUILD_HTML));
+
 });
 
 gulp.task("sass", function (release) {

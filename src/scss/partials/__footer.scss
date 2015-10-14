@@ -4,9 +4,16 @@
 
   clear: both;
   height: $footer-height;
+  font-family: $robotoslab;
   width: 100%;
 
+  &__wrapper {
+    margin: 0 auto;
+    width: $main-width;
+  }
+
   &__logo {
+    display: none;
     float: left;
     height: $logo-height;
     margin-left: $footer-horizontal-padding;
@@ -15,10 +22,13 @@
   }
 
   &__copyright {
-    font-size: rem($header-footer-font-size-px);
+    font-size: 1rem;
     float: right;
-    margin-right: $footer-horizontal-padding;
     @include calc(margin-top, "(#{$footer-height} - (#{$logo-height})*1/4)/2");
+  }
+
+  &__social-media {
+
   }
 
   @include media($bp8) { //no footer on mobile

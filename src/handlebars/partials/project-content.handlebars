@@ -1,0 +1,12 @@
+<main class="project">
+  <div class="project__meta">
+    <h2 class="project__meta__name">{{name}}</h2>
+    <div class="project__meta__description">{{description}}</div>
+  </div>
+  {{#each img}}
+    <img class="project__img" src="{{this}}" />
+  {{/each}}
+
+</main>
+<i class="scrollToTop"></i>
+{{> project-nav}}

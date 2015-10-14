@@ -1,0 +1,45 @@
+.project {
+  $img-width: 800px;
+
+  margin: 0 auto;
+  width: $main-width;
+
+  &__meta {
+    background-color: white;
+    box-shadow: 0px 3px 15px 1px rgba(168,168,168,0.75);
+    font-size: 0.9rem;
+    padding: 20px 30px;
+    position: fixed;
+    @include calc(width, "#{$main-width} - (#{$img-width} + #{$default-content-margin})");
+
+    &__name {
+      margin-bottom: 5px;
+      margin-top: 0;
+    }
+
+  }
+
+  &__img {
+    height: auto;
+    margin-left: 400px;
+    width: $img-width;
+
+    &:nth-of-type(n+2) {
+      margin-top: $default-content-margin;
+    }
+  }
+}
+
+.scrollToTop {
+  $img-height: 90px;
+  $img-width: 90px;
+
+  cursor: pointer;
+  display: none;
+  height: $img-height;
+  right: 25px;
+  position: fixed;
+  bottom: 25px;
+  width: $img-width;
+  @include retina-image("#{$img-path}/Back_to_Top", 100% 100%);
+}

@@ -1,23 +1,15 @@
 <header class="header">
-  <a href="/home"><i class="header__logo"></i></a>
-  <nav class="header__nav">
-    <a class="header__nav__item header__nav__item--about{{#if about-active}} header__nav__item--active{{/if}}" href="/about">About</a>
-    <a class="header__nav__item header__nav__item--contact{{#if contact-active}} header__nav__item--active{{/if}}" href="/contact">Contact</a>
-  </nav>
-  <nav class="header__nav__mobile">
-    <button class="header__nav__mobile__menu input-button-white">Menu</button>
-  </nav>
-</header>
-<div class="header-menu-mobile">
-  <div class="header-menu-mobile__wrapper">
-    <i class="header-menu-mobile__close"></i>
-    <div class="header-menu-mobile__list">
-      <a class="header-menu-mobile__list__item" href="/about">About</a>
-      <a class="header-menu-mobile__list__item" href="/contact">Contact</a>
-    </div>
-    <div class="header-menu-mobile__bottom">
-      <a href="/home"><i class="header-menu-mobile__bottom__badge"></i></a>
-      <div class="header-menu-mobile__bottom__copyright">&copy; 2015 Boxnest</div>
-    </div>
+  <div class="header__wrapper">
+    <a href="/home">
+      <i class="header__logo"></i>
+      <span class="header__name">Joseph Le</span>
+    </a>
+    <nav class="header__nav">
+      <a class="header__nav__item header__nav__item--about{{#if about-active}} header__nav__item--active{{/if}}" href="/about">About</a>
+      <a class="header__nav__item header__nav__item--contact{{#if contact-active}} header__nav__item--active{{/if}}" href="/contact">Contact</a>
+    </nav>
+    <nav class="header__nav__mobile">
+      <button class="header__nav__mobile__menu input-button-white">Menu</button>
+    </nav>
   </div>
-</div>
+</header>

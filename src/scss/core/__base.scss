@@ -14,9 +14,12 @@ html {
 }
 
 body {
-  font-size: 1rem;
-  font-family: $asap;
+  background-color: $offwhite;
+}
 
+main { //set font
+  font-family: $robotoslab;
+  padding-top: 30px;
 }
 
 *, *:before, *:after {

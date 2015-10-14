@@ -3,6 +3,10 @@
 $boxnest-yellow:                  #FFC523;
 $boxnest-gray:                    #656866;
 $boxnest-blue:                    #00ACD7;
+$joseph-darkblue:                 #082028;
+$joseph-lightblue:                #51C8EC;
+$offwhite:                        #F4F4F4;
+
 
 $content-text-gray:               #404041;
 $nav-bg-gray:                     #C2C7C6;
@@ -15,7 +19,7 @@ $font-path:                       "../fonts";
 
 //dimensions
 $main-width:                      1200px;
-$header-height:                   100px;
+$header-height:                   70px;
 $header-mobile-height:            66px;
 $footer-height:                   100px;
 $input-text-width:                450px;
@@ -25,7 +29,8 @@ $header-horizontal-padding:       105px;
 $footer-horizontal-padding:       100px;
 $footer-vertical-padding:         50px;
 $header-vertical-padding:         50px;
-$mobile-content-padding:       15px;
+$mobile-content-padding:          15px;
+$default-content-margin:          30px;
 
 //font-size
 $base-font-size:                  16px;
@@ -37,7 +42,8 @@ $button-font-size-px:             boxnest-convert-pt-px(16);
 $header-footer-font-size-px:      boxnest-convert-pt-px(14);
 
 //fonts
-$asap: "Asap";
+$brandon-grotesque:               "Brandon Grotesque", "Helvetica", "Sans Serif";
+$robotoslab:                      "RobotoSlab", "Lucida Grande", "Sans Serif";
 
 //breakpoints
 $bp1:                             1900px;

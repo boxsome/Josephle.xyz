@@ -6,7 +6,7 @@
     width: $main-width;
 
     &:nth-child(n+2) {
-      margin-top: 50px;
+      margin-top: $default-content-margin;
     }
 
     &__project {

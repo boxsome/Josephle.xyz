@@ -1,42 +1,63 @@
 .header {
-  $logo-height:                           44px;
-  $logo-width:                            192px;
+  $logo-height:                           60px;
+  $logo-width:                            60px;
   $logo-mobile-height:                    38px;
   $logo-mobile-width:                     166px;
   $nav-item-horizontal-padding:           15px;
   $nav-item-vertical-padding:             10px;
   $highlight-padding:                     5px;
 
+  background-color: white;
   height: $header-height;
+  font-family: $brandon-grotesque;
+  font-weight: bold;
+  margin: 0 auto;
+  text-transform: uppercase;
   width: 100%;
+
+  &__wrapper {
+    margin: 0 auto;
+    width: $main-width;
+  }
 
   &__logo {
     background-repeat: no-repeat;
+    display: none;
     float: left;
     height: $logo-height;
-    margin-left: 30px;
     width: $logo-width;
     @include calc(margin-top, "(#{$header-height} - #{$logo-height})/2");
-    @include retina-image("#{$img-path}/BN_Logo", $logo-width $logo-height);
+    @include retina-image("#{$img-path}/Joseph_Logo", $logo-width $logo-height);
+  }
+
+  &__name {
+    color: $joseph-darkblue;
+    display: inline-block;
+    font-size: 2rem;
+    margin-top: 12px;
+    text-decoration: none;
+
+    &:hover {
+      color: $joseph-lightblue;
+    }
   }
 
   &__nav {
     float: right;
-    margin-right: 30px;
-    @include calc(margin-top, "(#{$header-height} - #{$logo-height})/2");
+    margin-top: 12px;
+    //@include calc(margin-top, "(#{$header-height} - #{$logo-height})/2");
 
     &__item {
       $module: ".header__nav__item";
 
-      color: $content-text-gray;
+      color: $joseph-darkblue;
       display: inline-block;
-      font-size: rem($header-footer-font-size-px);
+      font-size: 1rem;
       position: relative;
       text-decoration: none;
       padding: $nav-item-vertical-padding $nav-item-horizontal-padding;
 
       &--active:after {
-        background-color: $boxnest-yellow;
         content: '';
         height: 5px;
         position: absolute;
@@ -47,9 +68,7 @@
 
 
       &:not(#{$module}--active):hover {
-        background-color: $nav-bg-gray;
-        border-radius: 100px;
-        color: white;
+        color: $joseph-lightblue;
       }
 
     }
@@ -86,78 +105,6 @@
         margin-right: $mobile-content-padding;
       }
 
-    }
-
-  }
-}
-
-//header-menu-mobile (for mobile only)
-.header-menu-mobile {
-  $badge-height:                          36px;
-  $badge-width:                           36px;
-  $close-height:                          21px;
-  $close-width:                           21px;
-  $menu-content-horizontal-padding:       30px;
-
-  background-color: rgba($footer-bg-gray, 0.97); //footer
-  display: none;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-
-  &__wrapper {
-    font-size: 1.5rem;
-    margin: 0 auto;
-    @include calc(width, "100% - #{$menu-content-horizontal-padding}*2");
-  }
-
-  &__close {
-    display: block;
-    height: $close-width;
-    float: right;
-    margin-top: $mobile-content-padding*2;
-    width: $close-width;
-    @include retina-image("#{$img-path}/BN_Close_Icon_Mobile", $close-width $close-height);
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  &__list {
-    clear: both;
-    padding-top: 50px;
-
-    &__item {
-      color: $content-text-gray;
-      display: block;
-      font-size: em($large-content-font-size-px);
-      font-weight: bold;
-      text-decoration: none;
-      &:nth-child(n+2) {
-        margin-top: 30px;
-      }
-    }
-
-  }
-
-  &__bottom {
-    bottom: 10%;
-    position: absolute;
-
-    &__badge {
-      display: block;
-      height: $badge-height;
-      width: $badge-width;
-      @include retina-image("#{$img-path}/BN_Badge", $badge-width $badge-height);
-    }
-
-    &__copyright {
-      margin-top: 30px;
-      font-size: em($header-footer-font-size-px);
     }
 
   }
