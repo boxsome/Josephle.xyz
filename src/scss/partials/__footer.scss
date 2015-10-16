@@ -1,7 +1,9 @@
 .footer {
-  $logo-height:             36px;
-  $logo-width:              36px;
+  $logo-height:                   36px;
+  $logo-width:                    36px;
+  $social-media-square-dimension: 32px;
 
+  background-color: white;
   clear: both;
   height: $footer-height;
   font-family: $robotoslab;
@@ -24,10 +26,57 @@
   &__copyright {
     font-size: 1rem;
     float: right;
-    @include calc(margin-top, "(#{$footer-height} - (#{$logo-height})*1/4)/2");
+    @include calc(margin-top, "(#{$footer-height} - #{$social-media-square-dimension})/2");
   }
 
   &__social-media {
+    float: left;
+    @include calc(margin-top, "(#{$footer-height} - #{$social-media-square-dimension})/2");
+
+    &__item {
+      display: inline-block;
+      height: $social-media-square-dimension;
+      width: $social-media-square-dimension;
+
+      &:nth-child(n+2) {
+        margin-left: 10px;
+      }
+
+      i {
+        position: relative;
+
+        &:before {
+          background-color: $joseph-darkblue;
+          content: '';
+          display: block;
+          height: $social-media-square-dimension;
+          position: absolute;
+          width: $social-media-square-dimension;
+        }
+
+      }
+
+      &--linkedin i {
+        height: 14px;
+        width: 15px;
+        @include retina-image("#{$img-path}/Linkedin_In", 100% 100%);
+
+        &:hover {
+          @include retina-image("#{$img-path}/Linkedin_Logo", 100% 100%);
+        }
+
+      }
+
+      &--twitter {
+        @include retina-image("#{$img-path}/Twitter_Inactive_Test", 100% 100%);
+
+        &:hover {
+          @include retina-image("#{$img-path}/Twitter_Logo", 100% 100%);
+        }
+
+      }
+
+    }
 
   }
 

@@ -1,10 +1,9 @@
 <main class="landing default-content">
   <div class="landing__wrapper">
-    {{#each project}}
-
-      {{#isMod0 @index 3}}
+    {{~#each project~}}
+      {{~#isMod0 @index 3~}}
         <div class="landing__row">
-      {{/isMod0}}
+      {{~/isMod0~}}
 
         <a class="landing__row__project" href="{{this.link}}">
           <div class="landing__row__project__img" style="background-image: url('{{this.img}}')">
@@ -12,12 +11,12 @@
           </div>
         </a>
 
-      {{#if @index}}
-        {{#isMod0 @index 2}}
+      {{~#if @index~}}
+        {{~#isMod0 @index 2~}}
           </div>
-        {{/isMod0}}
-      {{/if}}
+        {{~/isMod0~}}
+      {{~/if~}}
 
-    {{/each}}
+    {{~/each~}}
   </div>
 </main>

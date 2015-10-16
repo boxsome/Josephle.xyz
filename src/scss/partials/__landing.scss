@@ -1,30 +1,41 @@
 .landing {
+  $project-square-dimension:  360px;
 
   &__row {
-    height: 300px;
+    //height: 300px;
     margin: 0 auto;
-    width: $main-width;
+    @include calc(width, "#{$project-square-dimension}*3 + #{$default-content-margin}*2");
 
     &:nth-child(n+2) {
       margin-top: $default-content-margin;
     }
 
     &__project {
-      height: 100%;
-      @include span-columns(4);
+      //height: 100%;
+      box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.3);
+      display: inline-block;
+      height: $project-square-dimension;
+      width: $project-square-dimension;
+
+      &:nth-child(2) {
+        margin-left: $default-content-margin;
+        margin-right: $default-content-margin;
+      }
 
       &__img {
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        height: 100%;
         position: relative;
+        height: 100%;
         width: 100%;
 
         &:after {
           content: '';
           height: 100%;
+          left: 0;
           position: absolute;
+          top: 0;
           width: 100%;
 
         }

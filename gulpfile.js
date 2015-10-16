@@ -89,7 +89,7 @@ gulp.plumbedSrc = function () {
 
 gulp.task("build", function () {
   var deferred = q.defer();
-  gulpRunSequence("clean", ["handlebars", "img", "js", "sass", "static", "fonts", "projects", "css"], "watch", function () {
+  gulpRunSequence("clean", ["img", "js", "sass", "static", "fonts", "projects", "css"], "watch", function () {
     deferred.resolve();
   });
   return deferred.promise;
@@ -205,6 +205,49 @@ gulp.task("projects:images", function() {
         return path;
     }))
     .pipe(gulp.dest(PATH_BUILD_IMG));
+});
+
+gulp.task("projects:home", function() {
+  return gulp.plumbedSrc([
+      PATH_SRC_HANDLEBARS + "index.handlebars"
+  ])
+      .pipe(foreach(function(stream, file) {
+        var json = {},
+            absPath = file.path,
+            absPathSplit = absPath.split("\\"),
+            parentDirectoryName = absPathSplit[absPathSplit.length - 3],
+            imageNames = fs.readdirSync(absPathSplit.slice(0, absPathSplit.length - 1).join("\\") + "\\images").filter(function (name) {
+              return name.match(/^Image\d/);
+            }).sort(); //we only want images in the format Image1, Image2, etc.
+
+        json["landing-active"] = true;
+        json["name"] = parentDirectoryName;
+        json["img"] = "images" + parentDirectoryName + "/thumbnail.png";
+
+        console.log(json);
+        return gulp.plumbedSrc([
+              PATH_SRC_HANDLEBARS + "index.handlebars"
+        ])
+
+            .pipe(handlebars(json, handlebarOptions))
+
+            .pipe(rename(function(path){
+              path.extname = ".html";
+              path.basename = parentDirectoryName;
+            }))
+
+            .pipe(gulp.dest(PATH_BUILD_HTML));
+      }))
+
+
+      .pipe(rename(function(path){
+        path.extname = ".html";
+      }))
+
+      .pipe(plugins.minifyHtml())
+
+      .pipe(gulp.dest(PATH_BUILD_HTML));
+
 });
 
 gulp.task("projects:pages", function() {
