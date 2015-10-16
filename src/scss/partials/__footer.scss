@@ -2,6 +2,8 @@
   $logo-height:                   36px;
   $logo-width:                    36px;
   $social-media-square-dimension: 32px;
+  $twitter-color:                 #55ACEE;
+  $linkedin-color:                #006699;
 
   background-color: white;
   clear: both;
@@ -43,37 +45,48 @@
       }
 
       i {
+        background-color: $joseph-darkblue;
+        border-radius: 50%;
+        display: block;
+        height: 100%;
         position: relative;
+        width: 100%;
+      }
 
-        &:before {
-          background-color: $joseph-darkblue;
+      &--linkedin i  {
+
+        &:hover {
+          background-color: $linkedin-color;
+        }
+
+        &:after {
           content: '';
           display: block;
-          height: $social-media-square-dimension;
           position: absolute;
-          width: $social-media-square-dimension;
+          height: 14px;
+          left: 9px;
+          top: 8px;
+          width: 15px;
+          @include retina-image("#{$img-path}/Linkedin_In", 100% 100%);
         }
-
       }
 
-      &--linkedin i {
-        height: 14px;
-        width: 15px;
-        @include retina-image("#{$img-path}/Linkedin_In", 100% 100%);
+      &--twitter i {
 
         &:hover {
-          @include retina-image("#{$img-path}/Linkedin_Logo", 100% 100%);
+          background-color: $twitter-color;
         }
 
-      }
-
-      &--twitter {
-        @include retina-image("#{$img-path}/Twitter_Inactive_Test", 100% 100%);
-
-        &:hover {
-          @include retina-image("#{$img-path}/Twitter_Logo", 100% 100%);
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          height: 16px;
+          left: 7px;
+          top: 8px;
+          width: 19px;
+          @include retina-image("#{$img-path}/Twitter_Bird", 100% 100%);
         }
-
       }
 
     }
