@@ -6,7 +6,7 @@
   $linkedin-color:                #006699;
 
   background-color: white;
-  border-top: solid 1px $offgray;
+  border-top: $default-content-border;
   clear: both;
   height: $footer-height;
   font-family: $karla;
@@ -125,6 +125,10 @@
       a {
         color: $joseph-darkblue;
         text-decoration: none;
+
+        &:hover {
+          color :$joseph-lightblue;
+        }
       }
     }
 
@@ -146,6 +150,7 @@
     &__message {
       display: block;
       margin-top: 19px;
+      resize: none;
       width: 100%;
     }
   }

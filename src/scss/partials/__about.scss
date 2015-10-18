@@ -1,0 +1,31 @@
+.about {
+  margin: 0 auto;
+  width: $main-width;
+  @include calc(min-height, "100% - (#{$header-height} + #{$footer-height})");
+
+  &__img {
+    display: inline-block;
+    @include calc(width, "#{$main-width} - (#{$default-content-width} + #{$default-content-margin})");
+  }
+
+  &__meta {
+    background-color: white;
+    border: $default-content-border;
+    color: $joseph-darkblue;
+    display: inline-block;
+    float: right;
+    margin-left: $default-content-margin;
+    padding: 20px;
+    width: $default-content-width;
+
+    &__heading {
+      font-family: $brandon-grotesque;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    &__resume {
+      background-color: $joseph-lightblue;
+    }
+  }
+}

@@ -1,18 +1,16 @@
 .project {
-  $img-width: 800px;
-
   margin: 0 auto;
   width: $main-width;
 
   &__meta {
     background-color: white;
-    border: solid 1px $offgray;
+    border: $default-content-border;
     //box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.3);
     font-family: $karla;
     font-size: 0.9rem;
     padding: 20px 30px;
     position: fixed;
-    @include calc(width, "#{$main-width} - (#{$img-width} + #{$default-content-margin})");
+    @include calc(width, "#{$main-width} - (#{$default-content-width} + #{$default-content-margin})");
     @include calc(top, "#{$header-height} + #{$default-content-margin}");
 
     &__name {
@@ -23,10 +21,10 @@
   }
 
   &__img {
-    border: solid 1px $offgray;
+    border: $default-content-border;
     height: auto;
     margin-left: 400px;
-    width: $img-width;
+    width: $default-content-width;
 
     &:nth-of-type(n+2) {
       margin-top: $default-content-margin;

@@ -23,6 +23,7 @@ $header-height:                   70px;
 $header-mobile-height:            66px;
 $footer-height:                   360px;
 $input-text-width:                450px;
+$default-content-width:           800px;
 
 //padding & margins
 $header-horizontal-padding:       105px;
@@ -66,6 +67,9 @@ $bp14:                            600px;
 $bp15:                            500px;
 $bp16:                            400px;
 $bp17:                            300px;
+
+//misc
+$default-content-border:          solid 1px $offgray;
 
 //bourbon/neat values
 $default-feature:                 max-width;

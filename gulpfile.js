@@ -18,12 +18,14 @@ var _               = require('lodash-node'),
     // path config
     PATH_ROOT = __dirname + "/",
     PATH_FONTS = PATH_ROOT + "fonts/",
+    PATH_FILES = PATH_ROOT + "files/",
     PATH_BUILD = PATH_ROOT + "www/",
     PATH_BUILD_CSS = PATH_BUILD + "css/",
     PATH_BUILD_HTML = PATH_BUILD + "html/",
     PATH_BUILD_IMG = PATH_BUILD + "images/",
     PATH_BUILD_JS = PATH_BUILD + "js/",
     PATH_BUILD_FONTS = PATH_BUILD + "fonts/",
+    PATH_BUILD_FILES = PATH_BUILD + "files/",
     PATH_SRC = PATH_ROOT + "src/",
     PATH_SRC_VENDOR = PATH_SRC + "vendor/",
     PATH_SRC_HTML = PATH_SRC + "html/",
@@ -87,9 +89,26 @@ gulp.plumbedSrc = function () {
     }));
 };
 
+gulp.task("about", function() {
+
+  return gulp.plumbedSrc([
+      PATH_SRC_HANDLEBARS + "about.handlebars"
+    ])
+
+    .pipe(handlebars({ "about-active": true }, handlebarOptions))
+
+    .pipe(rename(function(path){
+      path.extname = ".html";
+    }))
+
+    .pipe(plugins.minifyHtml())
+
+    .pipe(gulp.dest(PATH_BUILD_HTML));
+});
+
 gulp.task("build", function () {
   var deferred = q.defer();
-  gulpRunSequence("clean", ["img", "js", "sass", "static", "fonts", "projects", "css"], "watch", function () {
+  gulpRunSequence("clean", ["img", "js", "sass", "static", "fonts", "files", "projects", "about", "css"], "watch", function () {
     deferred.resolve();
   });
   return deferred.promise;
@@ -110,31 +129,18 @@ gulp.task("css", function() {
 // default task
 gulp.task("default", ["build"]);
 
+gulp.task("files", function() {
+  return gulp.plumbedSrc([
+        PATH_FILES + "**/*"
+  ])
+      .pipe(gulp.dest(PATH_BUILD_FILES));
+});
+
 gulp.task("fonts", function() {
   return gulp.plumbedSrc([
     PATH_FONTS + "**/*"
   ])
   .pipe(gulp.dest(PATH_BUILD_FONTS));
-});
-
-gulp.task("handlebars", function() {
-
-  return gulp.plumbedSrc([
-    PATH_SRC_HANDLEBARS + "*.handlebars"
-  ])
-  .pipe(data(function(file) {
-    return require(PATH_SRC_JSON + path.basename(file.path, ".handlebars") + ".json");
-  }))
-
-  .pipe(handlebars("", handlebarOptions))
-
-  .pipe(rename(function(path){
-    path.extname = ".html";
-  }))
-
-  .pipe(plugins.minifyHtml())
-
-  .pipe(gulp.dest(PATH_BUILD_HTML));
 });
 
 gulp.task("html", function () {
@@ -194,7 +200,7 @@ gulp.task("js:vendor", function () {
     .pipe(gulp.dest(PATH_BUILD_JS));
 });
 
-gulp.task("projects", ["projects:images"]);
+gulp.task("projects", ["projects:images", "projects:home", "projects:pages"]);
 
 gulp.task("projects:images", function() {
   return gulp.plumbedSrc([

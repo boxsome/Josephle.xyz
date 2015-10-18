@@ -9,7 +9,7 @@
 
   background-color: white;
   //box-shadow: -1px 3px 12px 5px rgba(0,0,0,0.2);
-  border-bottom: solid 1px $offgray;
+  border-bottom: $default-content-border;
   height: $header-height;
   margin: 0 auto;
   overflow: hidden;

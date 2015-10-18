@@ -1,6 +1,15 @@
 <main class="project">
   <div class="project__meta">
-    <h2 class="project__meta__name">{{name}}</h2>
+    <div class="project__meta__heading"></div>
+      <h2 class="project__meta__heading__name">{{name}}</h2>
+      {{~#if icons~}}
+      <div class="project__meta__heading__icons">
+        {{~#each icons~}}
+        <i class="project__meta__heading__icons__item project-icon--{{this}}-blue"></i>
+        {{~/each~}}
+      </div>
+      {{~/if~}}
+    </div>
     <div class="project__meta__description">{{description}}</div>
   </div>
   {{#each img}}

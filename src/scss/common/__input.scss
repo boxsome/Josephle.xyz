@@ -1,13 +1,35 @@
+$default-input-height: 50px;
+
+@mixin joseph-button($bg-color, $text-color) {
+  background-color: $bg-color;
+  border: none;
+  color: $text-color;
+  font-family: $brandon-grotesque;
+  height: $default-input-height;
+  width: 150px;
+}
+
+.input-button-lightblue {
+  box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.3);
+  @include joseph-button($joseph-lightblue, white);
+  @include transition(all 0.2s ease-in-out);
+
+  &:hover {
+    box-shadow: -1px 2px 10px 3px rgba(0,0,0,0.075);
+    background-color: lighten($joseph-lightblue, 2%);
+  }
+}
+
 .input-text {
   border: solid 2px $joseph-darkblue;
   font-size: rem($header-footer-font-size-px);
-  height: 50px;
+  height: $default-input-height;
   padding: 10px 10px;
   line-height: 2;
 
   &:hover, &:focus {
     border-color: $joseph-lightblue;
-    box-shadow: 1px 6px 27px 1px rgba(101,102,101,0.25);
+    box-shadow: -1px 2px 10px 3px rgba(0,0,0,0.075);
   }
 }
 
