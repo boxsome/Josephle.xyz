@@ -73,13 +73,9 @@
       text-decoration: none;
       padding: $nav-item-vertical-padding $nav-item-horizontal-padding;
 
-      &--active:after {
-        content: '';
-        height: 5px;
-        position: absolute;
-        bottom: -15px;
-        @include calc(left, "#{$nav-item-horizontal-padding} - #{$highlight-padding}");
-        @include calc(width, "100% - #{$nav-item-horizontal-padding}*2 + #{$highlight-padding}*2");
+      &--active {
+        color: $joseph-lightblue;
+        cursor: default;
       }
 
 
