@@ -1,56 +1,24 @@
 .input-text {
-  border: solid 2px $boxnest-gray;
-  border-radius: 10px;
-  display: block;
+  border: solid 2px $joseph-darkblue;
   font-size: rem($header-footer-font-size-px);
-  padding: 10px 25px;
+  height: 50px;
+  padding: 10px 10px;
   line-height: 2;
-  width: $input-text-width;
 
   &:hover, &:focus {
-    border-color: $boxnest-blue;
-    border-width: 3px;
+    border-color: $joseph-lightblue;
     box-shadow: 1px 6px 27px 1px rgba(101,102,101,0.25);
   }
-
-  @include media($bp15) {
-    @include calc(width, "100% - #{$mobile-content-padding}*2");
-    padding: 10px;
-  }
-
 }
 
-%input-button {
-  border-radius: 6px;
-  font-size: rem($button-font-size-px);
-  padding: 12px 20px;
-  width: 100px;
-}
+.input-textarea {
+  border: solid 2px $joseph-darkblue;
+  font-size: rem($header-footer-font-size-px);
+  padding: 10px 10px;
+  line-height: 2;
 
-.input-button-yellow {
-  background-color: $boxnest-yellow;
-  @extend %input-button;
-
-  &:hover {
-    background-color: lighten($boxnest-yellow, 10%);
+  &:hover, &:focus {
+    border-color: $joseph-lightblue;
     box-shadow: 1px 6px 27px 1px rgba(101,102,101,0.25);
-  }
-
-  @include media($bp12) {
-    border-width: 1px;
-    padding: 8px 10px;
-    width: 55px;
-  }
-}
-
-.input-button-white {
-  background-color: white;
-  border: solid 2px $boxnest-gray;
-  @extend %input-button;
-
-  @include media($bp12) {
-    border-width: 1px;
-    padding: 8px 10px;
-    width: 55px;
   }
 }

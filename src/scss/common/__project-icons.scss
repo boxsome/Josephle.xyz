@@ -1,0 +1,59 @@
+.project-icon {
+  display: block;
+
+  &--branding {
+    height: 24px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Branding_White", 100% 100%);
+  }
+
+  &--copywriting {
+    height: 24px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Copywriting_White", 100% 100%);
+  }
+
+  &--editorial {
+    height: 20px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Editorial_White", 100% 100%);
+  }
+
+  &--illustration {
+    height: 22px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Illustration_White", 100% 100%);
+  }
+
+  &--mobile {
+    height: 24px;
+    width: 12px;
+    @include retina-image("#{$img-path}/Mobile_White", 100% 100%);
+  }
+
+  &--photography {
+    height: 20px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Photography_White", 100% 100%);
+  }
+
+  &--poster {
+    height: 24px;
+    width: 18px;
+    @include retina-image("#{$img-path}/Poster_White", 100% 100%);
+  }
+
+  &--typography {
+    height: 18px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Typography_White", 100% 100%);
+  }
+
+  &--web-design {
+    height: 24px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Web_Design_White", 100% 100%);
+  }
+
+
+}

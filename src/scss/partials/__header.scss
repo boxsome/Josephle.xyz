@@ -8,12 +8,23 @@
   $highlight-padding:                     5px;
 
   background-color: white;
+  //box-shadow: -1px 3px 12px 5px rgba(0,0,0,0.2);
+  border-bottom: solid 1px $offgray;
   height: $header-height;
-  font-family: $brandon-grotesque;
-  font-weight: bold;
   margin: 0 auto;
-  text-transform: uppercase;
+  overflow: hidden;
   width: 100%;
+  z-index: 2;
+  @include transition(all 0.3s ease-in-out, height 0.1s ease-in-out);
+
+  &.hidden {
+    height: 0;
+  }
+
+  &.fixed {
+    box-shadow: -1px 2px 10px 3px rgba(0,0,0,0.2);
+    position: fixed;
+  }
 
   &__wrapper {
     margin: 0 auto;
@@ -33,9 +44,12 @@
   &__name {
     color: $joseph-darkblue;
     display: inline-block;
+    font-family: $brandon-grotesque;
+    font-weight: bold;
     font-size: 2rem;
     margin-top: 12px;
     text-decoration: none;
+    text-transform: uppercase;
 
     &:hover {
       color: $joseph-lightblue;
@@ -45,14 +59,16 @@
   &__nav {
     float: right;
     margin-top: 12px;
-    //@include calc(margin-top, "(#{$header-height} - #{$logo-height})/2");
+    font-family: $karla;
+    font-weight: bold;
+    text-transform: capitalize;
 
     &__item {
       $module: ".header__nav__item";
 
       color: $joseph-darkblue;
       display: inline-block;
-      font-size: 1rem;
+      font-size: 1.1rem;
       position: relative;
       text-decoration: none;
       padding: $nav-item-vertical-padding $nav-item-horizontal-padding;

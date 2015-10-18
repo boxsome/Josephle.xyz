@@ -6,34 +6,55 @@
   $linkedin-color:                #006699;
 
   background-color: white;
+  border-top: solid 1px $offgray;
   clear: both;
   height: $footer-height;
-  font-family: $robotoslab;
+  font-family: $karla;
+  overflow: hidden;
   width: 100%;
 
   &__wrapper {
     margin: 0 auto;
+    height: 100%;
     width: $main-width;
   }
 
-  &__logo {
-    display: none;
+  &__left {
     float: left;
-    height: $logo-height;
-    margin-left: $footer-horizontal-padding;
-    width: $logo-width;
-    @include calc(margin-top, "(#{$footer-height} - #{$logo-height})/2");
+    height: 100%;
+    margin-top: $default-content-margin;
+  }
+
+  &__right {
+    float: right;
+    height: 100%;
+    margin-top: $default-content-margin;
+  }
+
+  &__heading {
+    color: $joseph-darkblue;
+    font-size: 1rem;
+    position: relative;
+    text-transform: uppercase;
+
+    &:before {
+      background-color: $joseph-darkblue;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      top: -8px;
+      width: 36px;
+    }
   }
 
   &__copyright {
     font-size: 1rem;
-    float: right;
-    @include calc(margin-top, "(#{$footer-height} - #{$social-media-square-dimension})/2");
+    margin-top: 10px;
   }
 
   &__social-media {
-    float: left;
-    @include calc(margin-top, "(#{$footer-height} - #{$social-media-square-dimension})/2");
+    margin-top: 95px;
 
     &__item {
       display: inline-block;
@@ -81,16 +102,52 @@
           content: '';
           display: block;
           position: absolute;
-          height: 16px;
-          left: 7px;
-          top: 8px;
-          width: 19px;
+          height: 13px;
+          left: 9px;
+          top: 9.5px;
+          width: 15px;
           @include retina-image("#{$img-path}/Twitter_Bird", 100% 100%);
         }
       }
 
     }
 
+  }
+
+  &__contact-meta {
+
+    &__phone {
+      margin-top: 5px;
+    }
+
+    &__phone, &__email {
+      display: block;
+      a {
+        color: $joseph-darkblue;
+        text-decoration: none;
+      }
+    }
+
+  }
+
+  &__contact-form {
+
+    &__email {
+      display: inline-block;
+      margin-right: 18px;
+      width: 250px;
+    }
+
+    &__subject {
+      display: inline-block;
+      width: 350px;
+    }
+
+    &__message {
+      display: block;
+      margin-top: 19px;
+      width: 100%;
+    }
   }
 
   @include media($bp8) { //no footer on mobile

@@ -18,3 +18,31 @@
   font-weight: lighter;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "RobotoSlab";
+  src: url("#{$font-path}/Roboto_Slab/RobotoSlab-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gidole";
+  src: url("#{$font-path}/Gidole_Regular/Gidole-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("#{$font-path}/Karla/Karla-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Pier Sans";
+  src: url("#{$font-path}/Pier_Sans/pier-regular.otf");
+  font-style: normal;
+  font-weight: normal;
+}

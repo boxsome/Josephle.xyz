@@ -208,46 +208,42 @@ gulp.task("projects:images", function() {
 });
 
 gulp.task("projects:home", function() {
+  var templateData = {},
+      projectNames = fs.readdirSync(PATH_SRC_PROJECTS);
+
+  templateData["landing-active"] = true;
+  templateData["project"] = [];
+  projectNames.forEach(function(element) {
+    var projectData = {},
+      iconsJson,
+      str;
+
+    projectData["name"] = element;
+    projectData["link"] = element.replace(" ", "-");
+    projectData["img"] = "images/" + element + "/thumbnail.png";
+    projectData["blurb"] = fs.readFileSync(PATH_SRC_PROJECTS + element + "/blurb.txt", "utf8");
+    if (fs.existsSync(PATH_SRC_PROJECTS + element + "/icons.json")) {
+      iconsJson = require(PATH_SRC_PROJECTS + element + "/icons.json"),
+      str = iconsJson["icons"].join(",");
+      projectData["icons"] = str.toLowerCase().replace(" ", "-").split(",");
+    }
+    templateData["project"].push(projectData);
+  });
+
+  console.log(templateData);
   return gulp.plumbedSrc([
       PATH_SRC_HANDLEBARS + "index.handlebars"
-  ])
-      .pipe(foreach(function(stream, file) {
-        var json = {},
-            absPath = file.path,
-            absPathSplit = absPath.split("\\"),
-            parentDirectoryName = absPathSplit[absPathSplit.length - 3],
-            imageNames = fs.readdirSync(absPathSplit.slice(0, absPathSplit.length - 1).join("\\") + "\\images").filter(function (name) {
-              return name.match(/^Image\d/);
-            }).sort(); //we only want images in the format Image1, Image2, etc.
+    ])
 
-        json["landing-active"] = true;
-        json["name"] = parentDirectoryName;
-        json["img"] = "images" + parentDirectoryName + "/thumbnail.png";
+    .pipe(handlebars(templateData, handlebarOptions))
 
-        console.log(json);
-        return gulp.plumbedSrc([
-              PATH_SRC_HANDLEBARS + "index.handlebars"
-        ])
+    .pipe(rename(function(path){
+      path.extname = ".html";
+    }))
 
-            .pipe(handlebars(json, handlebarOptions))
+    .pipe(plugins.minifyHtml())
 
-            .pipe(rename(function(path){
-              path.extname = ".html";
-              path.basename = parentDirectoryName;
-            }))
-
-            .pipe(gulp.dest(PATH_BUILD_HTML));
-      }))
-
-
-      .pipe(rename(function(path){
-        path.extname = ".html";
-      }))
-
-      .pipe(plugins.minifyHtml())
-
-      .pipe(gulp.dest(PATH_BUILD_HTML));
-
+    .pipe(gulp.dest(PATH_BUILD_HTML));
 });
 
 gulp.task("projects:pages", function() {
@@ -282,7 +278,7 @@ gulp.task("projects:pages", function() {
 
         .pipe(rename(function(path){
           path.extname = ".html";
-          path.basename = parentDirectoryName;
+          path.basename = parentDirectoryName.replace(" ", "-");
         }))
 
         .pipe(gulp.dest(PATH_BUILD_HTML));

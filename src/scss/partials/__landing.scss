@@ -15,6 +15,7 @@
       box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.3);
       display: inline-block;
       height: $project-square-dimension;
+      overflow: hidden;
       width: $project-square-dimension;
 
       &:nth-child(2) {
@@ -40,27 +41,92 @@
 
         }
 
-        &:hover {
-
-          &:after {
-            background: rgba(black, 0.75);
-          }
-
-          .landing__row__project__name {
-            display: block;
-          }
+        &.hovered {
+          @include filter(blur(5px));
         }
 
       }
 
-      &__name {
-        bottom: 25px;
-        color: white;
-        display: none;
-        font-size: 2rem; //change this later
+      &__overlay {
+        background: rgba($joseph-darkblue, 0.95);
+        height: 100%;
+        opacity: 0;
+        position: relative;
+        top: -$project-square-dimension;
+        width: 100%;
+        @include transition(opacity 0.2s ease-in-out);
+
+        &.hovered {
+          opacity: 1;
+          .landing__row__project__line {
+            opacity: 1;
+            top: 172px;
+          }
+          .landing__row__project__name {
+            opacity: 1;
+            top: 180px;
+          }
+          .landing__row__project__blurb {
+            opacity: 1;
+            top: 220px;
+          }
+          .landing__row__project__icons {
+            opacity: 1;
+            bottom: 25px;
+          }
+        }
+      }
+
+      &__line {
+        background-color: white;
+        height: 1px;
         left: 25px;
         position: absolute;
+        width: 36px;
+        top: 60px;
+        opacity: 0;
         z-index: 1;
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &__name {
+        color: white;
+        font-size: 1.5rem; //change this later
+        left: 25px;
+        position: absolute;
+        top: 68px;
+        opacity: 0;
+        z-index: 1;
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &__blurb {
+        color: white;
+        font-size: 0.85rem; //change this later
+        left: 25px;
+        position: absolute;
+        top: 108px;
+        opacity: 0;
+        z-index: 1;
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &__icons {
+        bottom: 0;
+        opacity: 0;
+        position: absolute;
+        left: 25px;
+        z-index: 1;
+        @include transition(all 0.2s ease-in-out);
+
+        &__item {
+          display: inline-block;
+
+          &:nth-child(n+2) {
+            margin-left: 10px;
+          }
+        }
+
       }
     }
 

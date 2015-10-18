@@ -1,4 +1,4 @@
-<main class="landing default-content">
+<main class="landing">
   <div class="landing__wrapper">
     {{~#each project~}}
       {{~#isMod0 @index 3~}}
@@ -7,7 +7,18 @@
 
         <a class="landing__row__project" href="{{this.link}}">
           <div class="landing__row__project__img" style="background-image: url('{{this.img}}')">
+          </div>
+          <div class="landing__row__project__overlay">
+            <div class="landing__row__project__line"></div>
             <span class="landing__row__project__name">{{this.name}}</span>
+            <span class="landing__row__project__blurb">{{this.blurb}}</span>
+            {{~#if icons~}}
+            <div class="landing__row__project__icons">
+              {{~#each icons~}}
+              <i class="landing__row__project__icons__item project-icon--{{this}}"></i>
+              {{~/each~}}
+            </div>
+            {{~/if~}}
           </div>
         </a>
 
