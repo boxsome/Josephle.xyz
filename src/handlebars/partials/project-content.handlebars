@@ -5,7 +5,9 @@
       {{~#if icons~}}
       <div class="project__meta__heading__icons">
         {{~#each icons~}}
-        <i class="project__meta__heading__icons__item project-icon project-icon--{{this}} blue"></i>
+        <i class="project__meta__heading__icons__item project-icon project-icon--{{this}} blue">
+          <div class="project-icon-tooltip">{{this}}</div>
+        </i>
         {{~/each~}}
       </div>
       {{~/if~}}

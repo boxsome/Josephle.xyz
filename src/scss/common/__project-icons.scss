@@ -107,6 +107,36 @@
 
 }
 
+.project-icon-tooltip {
+  background-color: $joseph-lightblue;
+  color: white;
+  display: none;
+  left: -25px;
+  font-family: $karla;
+  font-style: normal;
+  padding: 5px;
+  position: absolute;
+  text-transform: capitalize;
+  top: -35px;
+  white-space: nowrap;
+
+  &:after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $joseph-lightblue;
+    bottom: -5px;
+    content: '';
+    height: 0;
+    left: 34px;
+    position: absolute;
+    width: 0;
+  }
+
+  &--active {
+    display: block;
+  }
+}
+
 %project-icon-plus {
   content: '+';
   font-family: $brandon-grotesque;
