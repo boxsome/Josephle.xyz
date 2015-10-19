@@ -5,6 +5,7 @@
 
   &__img {
     display: inline-block;
+    float: left;
     @include calc(width, "#{$main-width} - (#{$default-content-width} + #{$default-content-margin})");
   }
 
@@ -13,7 +14,6 @@
     border: $default-content-border;
     color: $joseph-darkblue;
     display: inline-block;
-    float: right;
     margin-left: $default-content-margin;
     padding: 20px;
     width: $default-content-width;

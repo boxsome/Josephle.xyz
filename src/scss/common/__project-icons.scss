@@ -11,6 +11,14 @@
     &.blue {
       @include retina-image("#{$img-path}/Branding_Blue", 100% 100%);
     }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -27px;
+
+      &:after {
+        left: 34px;
+      }
+    }
   }
 
   &--copywriting {
@@ -21,6 +29,15 @@
     &.blue {
       @include retina-image("#{$img-path}/Copywriting_Blue", 100% 100%);
     }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -37px;
+
+      &:after {
+        left: 44px;
+      }
+    }
+
   }
 
   &--editorial {
@@ -34,6 +51,15 @@
 
     &:before {
       top: -3px !important; //override before icon positioning because height is different
+    }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -26px;
+      top: -44px !important; //got to account for smaller height
+
+      &:after {
+        left: 33px;
+      }
     }
   }
 
@@ -49,6 +75,15 @@
     &:before {
       top: -1px !important; //override before icon positioning because height is different
     }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -35px;
+      top: -42px !important; //got to account for smaller height
+
+      &:after {
+        left: 41px;
+      }
+    }
   }
 
   &--mobile {
@@ -58,6 +93,14 @@
 
     &.blue {
       @include retina-image("#{$img-path}/Mobile_Blue", 100% 100%);
+    }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -26px;
+
+      &:after {
+        left: 27px;
+      }
     }
   }
 
@@ -69,6 +112,15 @@
     &.blue {
       @include retina-image("#{$img-path}/Photography_Blue", 100% 100%);
     }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -39px;
+      top: -44px !important; //got to make up for smaller height
+
+      &:after {
+        left: 45px;
+      }
+    }
   }
 
   &--poster {
@@ -78,6 +130,14 @@
 
     &.blue {
       @include retina-image("#{$img-path}/Poster_Blue", 100% 100%);
+    }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -22px;
+
+      &:after {
+        left: 26px;
+      }
     }
   }
 
@@ -93,6 +153,15 @@
     &:before {
       top: -5px !important; //override before icon positioning because height is different
     }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -35px;
+      top: -46px !important;
+
+      &:after {
+        left: 42px;
+      }
+    }
   }
 
   &--web-design {
@@ -103,6 +172,14 @@
     &.blue {
       @include retina-image("#{$img-path}/Web_Design_Blue", 100% 100%);
     }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -35px;
+
+      &:after {
+        left: 44px;
+      }
+    }
   }
 
 }
@@ -111,13 +188,13 @@
   background-color: $joseph-lightblue;
   color: white;
   display: none;
-  left: -25px;
   font-family: $karla;
   font-style: normal;
-  padding: 5px;
+  font-size: 0.9rem;
+  padding: 5px 10px;
   position: absolute;
   text-transform: capitalize;
-  top: -35px;
+  top: -40px;
   white-space: nowrap;
 
   &:after {
@@ -127,7 +204,6 @@
     bottom: -5px;
     content: '';
     height: 0;
-    left: 34px;
     position: absolute;
     width: 0;
   }
