@@ -21,6 +21,7 @@
       &:nth-child(2) {
         margin-left: $default-content-margin;
         margin-right: $default-content-margin;
+
       }
 
       &__img {
@@ -120,10 +121,14 @@
         @include transition(all 0.2s ease-in-out);
 
         &__item {
-          display: inline-block;
 
           &:nth-child(n+2) {
-            margin-left: 10px;
+            margin-left: 25px;
+
+            &:before {
+              color: white;
+              @extend %project-icon-plus;
+            }
           }
         }
 

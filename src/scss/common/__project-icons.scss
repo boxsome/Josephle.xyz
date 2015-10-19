@@ -1,59 +1,118 @@
 .project-icon {
-  display: block;
+  background-size: cover;
+  display: inline-block;
+  position: relative;
 
   &--branding {
     height: 24px;
     width: 24px;
     @include retina-image("#{$img-path}/Branding_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Branding_Blue", 100% 100%);
+    }
   }
 
   &--copywriting {
     height: 24px;
     width: 24px;
     @include retina-image("#{$img-path}/Copywriting_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Copywriting_Blue", 100% 100%);
+    }
   }
 
   &--editorial {
     height: 20px;
     width: 24px;
     @include retina-image("#{$img-path}/Editorial_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Editorial_Blue", 100% 100%);
+    }
+
+    &:before {
+      top: -3px !important; //override before icon positioning because height is different
+    }
   }
 
   &--illustration {
     height: 22px;
     width: 24px;
     @include retina-image("#{$img-path}/Illustration_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Illustration_Blue", 100% 100%);
+    }
+
+    &:before {
+      top: -1px !important; //override before icon positioning because height is different
+    }
   }
 
   &--mobile {
     height: 24px;
     width: 12px;
     @include retina-image("#{$img-path}/Mobile_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Mobile_Blue", 100% 100%);
+    }
   }
 
   &--photography {
     height: 20px;
     width: 24px;
     @include retina-image("#{$img-path}/Photography_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Photography_Blue", 100% 100%);
+    }
   }
 
   &--poster {
     height: 24px;
     width: 18px;
     @include retina-image("#{$img-path}/Poster_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Poster_Blue", 100% 100%);
+    }
   }
 
   &--typography {
     height: 18px;
     width: 24px;
     @include retina-image("#{$img-path}/Typography_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Typography_Blue", 100% 100%);
+    }
+
+    &:before {
+      top: -5px !important; //override before icon positioning because height is different
+    }
   }
 
   &--web-design {
     height: 24px;
     width: 24px;
     @include retina-image("#{$img-path}/Web_Design_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Web_Design_Blue", 100% 100%);
+    }
   }
 
+}
 
+%project-icon-plus {
+  content: '+';
+  font-family: $brandon-grotesque;
+  font-style: normal;
+  font-weight: bold;
+  position: absolute;
+  left: -16px;
+  top: 1px;
 }

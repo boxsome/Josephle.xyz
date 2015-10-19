@@ -258,6 +258,7 @@ gulp.task("projects:pages", function() {
     ])
     .pipe(foreach(function(stream, file) {
       var json = {},
+        iconsJson, str,
         absPath = file.path,
         absPathSplit = absPath.split("\\"),
         parentDirectoryName = absPathSplit[absPathSplit.length - 2],
@@ -275,6 +276,12 @@ gulp.task("projects:pages", function() {
           console.log(filePath);
           json["img"].push(filePath);
         });
+
+        if (fs.existsSync(PATH_SRC_PROJECTS + parentDirectoryName + "/icons.json")) {
+          iconsJson = require(PATH_SRC_PROJECTS + parentDirectoryName + "/icons.json"),
+              str = iconsJson["icons"].join(",");
+          json["icons"] = str.toLowerCase().replace(" ", "-").split(",");
+        }
         console.log(json);
       return gulp.plumbedSrc([
         PATH_SRC_HANDLEBARS + "index.handlebars"
