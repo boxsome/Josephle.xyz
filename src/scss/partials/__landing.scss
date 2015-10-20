@@ -1,140 +1,193 @@
 .landing {
   $project-square-dimension:  360px;
 
-  &__row {
-    //height: 300px;
-    margin: 0 auto;
-    @include calc(width, "#{$project-square-dimension}*3 + #{$default-content-margin}*2");
+  width: 100%;
 
-    &:nth-child(n+2) {
+  &__wrapper {
+    margin: 0 auto;
+    text-align: center;
+    @include calc(width, "#{$project-square-dimension}*3 + #{$default-content-margin}*2");
+  }
+
+  &__project {
+    //height: 100%;
+    box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.3);
+    display: inline-block;
+    height: $project-square-dimension;
+    overflow: hidden;
+    width: $project-square-dimension;
+
+    &:nth-child(3n + 2) {
+      margin-left: $default-content-margin;
+      margin-right: $default-content-margin;
+    }
+
+    &:nth-child(n + 4) {
       margin-top: $default-content-margin;
     }
 
-    &__project {
-      //height: 100%;
-      box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.3);
-      display: inline-block;
-      height: $project-square-dimension;
-      overflow: hidden;
-      width: $project-square-dimension;
+    &__img {
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: relative;
+      height: 100%;
+      width: 100%;
 
-      &:nth-child(2) {
-        margin-left: $default-content-margin;
-        margin-right: $default-content-margin;
+      &:after {
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
 
       }
+
+      &.hovered {
+        @include filter(blur(5px));
+      }
+
+    }
+
+    &__overlay {
+      background: rgba($joseph-darkblue, 0.95);
+      height: 100%;
+      opacity: 0;
+      position: relative;
+      text-align: left;
+      top: -$project-square-dimension;
+      width: 100%;
+      @include transition(opacity 0.2s ease-in-out);
+
+      &.hovered {
+        opacity: 1;
+        .landing__project__line {
+          opacity: 1;
+          top: 172px;
+        }
+        .landing__project__name {
+          opacity: 1;
+          top: 180px;
+        }
+        .landing__project__blurb {
+          opacity: 1;
+          top: 215px;
+        }
+        .landing__project__icons {
+          opacity: 1;
+          bottom: 25px;
+        }
+      }
+    }
+
+    &__line {
+      background-color: white;
+      height: 1px;
+      left: $default-content-margin;
+      position: absolute;
+      width: 36px;
+      top: 60px;
+      opacity: 0;
+      z-index: 1;
+      @include transition(all 0.2s ease-in-out);
+    }
+
+    &__name {
+      color: white;
+      font-size: 1.5rem; //change this later
+      padding: 0 $default-content-margin;
+      position: absolute;
+      top: 68px;
+      opacity: 0;
+      width: 100%;
+      z-index: 1;
+      @include transition(all 0.2s ease-in-out);
+    }
+
+    &__blurb {
+      color: white;
+      font-size: 0.85rem; //change this later
+      line-height: 1.3;
+      padding: 0 $default-content-margin;
+      position: absolute;
+      top: 108px;
+      opacity: 0;
+      width: 100%;
+      z-index: 1;
+      @include transition(all 0.2s ease-in-out);
+    }
+
+    &__icons {
+      bottom: 0;
+      opacity: 0;
+      position: absolute;
+      left: $default-content-margin;
+      z-index: 1;
+      @include transition(all 0.2s ease-in-out);
+
+      &__item {
+
+        &:nth-child(n+2) {
+          margin-left: 25px;
+
+          &:before {
+            color: white;
+            @extend %project-icon-plus;
+          }
+        }
+      }
+
+    }
+  }
+
+  @include media($bp8) {
+
+    &__wrapper {
+      padding: 0 $default-content-margin;
+      width: 100%;
+    }
+
+    &__project {
+
+      &:nth-child(3n + 2) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      &:nth-child(2n + 1) {
+        margin-right: $default-content-margin;
+      }
+
+      &:nth-child(n + 3) {
+        margin-top: $default-content-margin;
+      }
+
+    }
+  }
+
+  @include media($project-square-dimension*2 + $default-content-margin*3) {
+    &__project {
+
+      &:nth-child(1) {
+        margin: 0;
+      }
+
+      &:nth-child(n + 2) {
+        margin: $default-content-margin 0 0;
+      }
+
+    }
+
+  }
+
+  @include media($bp16) {
+    &__project {
+      height: 100%;
+      @include calc(width, "100% - (#{$default-content-margin}*2)");
 
       &__img {
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        position: relative;
-        height: 100%;
-        width: 100%;
-
-        &:after {
-          content: '';
-          height: 100%;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 100%;
-
-        }
-
-        &.hovered {
-          @include filter(blur(5px));
-        }
-
-      }
-
-      &__overlay {
-        background: rgba($joseph-darkblue, 0.95);
-        height: 100%;
-        opacity: 0;
-        position: relative;
-        top: -$project-square-dimension;
-        width: 100%;
-        @include transition(opacity 0.2s ease-in-out);
-
-        &.hovered {
-          opacity: 1;
-          .landing__row__project__line {
-            opacity: 1;
-            top: 172px;
-          }
-          .landing__row__project__name {
-            opacity: 1;
-            top: 180px;
-          }
-          .landing__row__project__blurb {
-            opacity: 1;
-            top: 215px;
-          }
-          .landing__row__project__icons {
-            opacity: 1;
-            bottom: 25px;
-          }
-        }
-      }
-
-      &__line {
-        background-color: white;
-        height: 1px;
-        left: $default-content-margin;
-        position: absolute;
-        width: 36px;
-        top: 60px;
-        opacity: 0;
-        z-index: 1;
-        @include transition(all 0.2s ease-in-out);
-      }
-
-      &__name {
-        color: white;
-        font-size: 1.5rem; //change this later
-        padding: 0 $default-content-margin;
-        position: absolute;
-        top: 68px;
-        opacity: 0;
-        width: 100%;
-        z-index: 1;
-        @include transition(all 0.2s ease-in-out);
-      }
-
-      &__blurb {
-        color: white;
-        font-size: 0.85rem; //change this later
-        line-height: 1.3;
-        padding: 0 $default-content-margin;
-        position: absolute;
-        top: 108px;
-        opacity: 0;
-        width: 100%;
-        z-index: 1;
-        @include transition(all 0.2s ease-in-out);
-      }
-
-      &__icons {
-        bottom: 0;
-        opacity: 0;
-        position: absolute;
-        left: $default-content-margin;
-        z-index: 1;
-        @include transition(all 0.2s ease-in-out);
-
-        &__item {
-
-          &:nth-child(n+2) {
-            margin-left: 25px;
-
-            &:before {
-              color: white;
-              @extend %project-icon-plus;
-            }
-          }
-        }
-
+        padding-top: 100%;
       }
     }
 
