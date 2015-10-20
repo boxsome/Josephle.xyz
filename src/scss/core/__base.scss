@@ -6,11 +6,6 @@ html, body {
 html {
   box-sizing: border-box;
   font-size: $base-font-size;
-
-  @include media($bp12) {
-    font-size: 10px;
-  }
-
 }
 
 body {
