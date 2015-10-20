@@ -15,17 +15,30 @@
     color: $joseph-darkblue;
     display: inline-block;
     margin-left: $default-content-margin;
-    padding: 20px;
+    padding: 20px $default-content-margin 0;
     width: $default-content-width;
 
     &__heading {
       font-family: $brandon-grotesque;
+      font-size: 1.5rem;
       margin: 0;
       text-transform: uppercase;
     }
 
+    &__subheading {
+      font-size: 1.3rem;
+      line-height: 1.3;
+    }
+
+    &__description {
+      &:nth-last-of-type(1) {
+        margin-bottom: 0;
+      }
+    }
+
     &__resume {
       background-color: $joseph-lightblue;
+      margin: $default-content-margin 0;
     }
   }
 }
