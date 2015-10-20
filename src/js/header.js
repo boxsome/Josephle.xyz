@@ -35,7 +35,7 @@ $(document).ready(function() {
       headerToggled = false;
       scrollTimeout = setTimeout(toggleStickyHeader, 2000);
     }
-    else if (!headerToggled && curPos > newPos) { //scroll up
+    else if (!headerToggled && (curPos > newPos || $(window).scrollTop() + $(window).height() >= $(document).height())) { //scroll up or hit bottom
       toggleStickyHeader();
       clearTimeout(scrollTimeout);
     }

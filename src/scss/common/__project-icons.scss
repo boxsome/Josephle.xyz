@@ -55,10 +55,13 @@
 
     .project-icon-tooltip { //positioning of tooltip
       left: -26px;
-      top: -44px !important; //got to account for smaller height
 
       &:after {
         left: 33px;
+      }
+
+      &--active {
+        top: -44px !important; //got to account for smaller height
       }
     }
   }
@@ -78,10 +81,13 @@
 
     .project-icon-tooltip { //positioning of tooltip
       left: -35px;
-      top: -42px !important; //got to account for smaller height
 
       &:after {
         left: 41px;
+      }
+
+      &--active {
+        top: -42px !important; //got to account for smaller height
       }
     }
   }
@@ -115,10 +121,13 @@
 
     .project-icon-tooltip { //positioning of tooltip
       left: -39px;
-      top: -44px !important; //got to make up for smaller height
 
       &:after {
         left: 45px;
+      }
+
+      &--active {
+        top: -44px !important; //got to make up for smaller height
       }
     }
   }
@@ -138,6 +147,7 @@
       &:after {
         left: 26px;
       }
+
     }
   }
 
@@ -156,10 +166,13 @@
 
     .project-icon-tooltip { //positioning of tooltip
       left: -35px;
-      top: -46px !important;
 
       &:after {
         left: 42px;
+      }
+
+      &--active {
+        top: -46px !important;
       }
     }
   }
@@ -187,15 +200,17 @@
 .project-icon-tooltip {
   background-color: $joseph-lightblue;
   color: white;
-  display: none;
+  display: block;
   font-family: $karla;
   font-style: normal;
   font-size: 0.9rem;
+  opacity: 0;
   padding: 5px 10px;
   position: absolute;
   text-transform: capitalize;
-  top: -40px;
+  top: -60px;
   white-space: nowrap;
+  @include transition(all 0.2s ease-in-out);
 
   &:after {
     border-left: 5px solid transparent;
@@ -209,7 +224,8 @@
   }
 
   &--active {
-    display: block;
+    opacity: 1;
+    top: -40px;
   }
 }
 
