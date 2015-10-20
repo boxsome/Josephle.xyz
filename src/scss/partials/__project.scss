@@ -54,4 +54,27 @@
       margin-top: $default-content-margin;
     }
   }
+
+  @include media($bp8) {
+    padding: $default-content-margin;
+    width: 100%;
+
+    &__meta {
+      margin: 0 auto;
+      position: static;
+      width: $default-content-width;
+    }
+
+    &__img {
+      display: block;
+      margin: $default-content-margin auto 0;
+    }
+  }
+
+  @include media($bp12) {
+
+    &__meta, &__img {
+      width: 100%;
+    }
+  }
 }
