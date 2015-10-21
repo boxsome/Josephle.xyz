@@ -23,7 +23,9 @@
 
   &.fixed {
     box-shadow: -1px 2px 10px 3px rgba(0,0,0,0.2);
+    height: 0;
     position: fixed;
+    top: 0;
   }
 
   &__wrapper {
@@ -100,6 +102,10 @@
   }
 
   @include media($bp12) {
+
+    &__wrapper {
+      padding: 0 $mobile-content-padding;
+    }
 
     &__nav {
       display: none;

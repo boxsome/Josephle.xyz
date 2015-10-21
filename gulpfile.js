@@ -270,6 +270,7 @@ gulp.task("projects:pages", function() {
         json["description"] = file.contents.toString();
         json["name"] = parentDirectoryName;
         json["img"] = [];
+        json["blurb"] = fs.readFileSync(PATH_SRC_PROJECTS + parentDirectoryName + "/blurb.txt", "utf8");
 
         imageNames.forEach(function(val) {
           var filePath = "images/" + parentDirectoryName + "/" + val;
@@ -325,7 +326,8 @@ gulp.task("static", function () {
   return gulp.plumbedSrc([
       PATH_ROOT + "favicon.ico",
       PATH_SRC + "index.html",
-      PATH_SRC + "server.js"
+      PATH_SRC + "server.js",
+      PATH_ROOT + "sitemap.xml"
     ])
     .pipe(gulp.dest(PATH_BUILD));
 });

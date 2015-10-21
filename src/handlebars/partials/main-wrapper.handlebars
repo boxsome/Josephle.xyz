@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width-device-width, initial-scale=1" />
-    <meta name="google-site-verification" content="vEgGmDUXGiEe_ftXmQZObKJzX4XnqXR9MfsY7Ng5648" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {{#if landing-active}}
+      <title>Joseph Le - Graphic and Visual Design Portfolio Home Page</title>
+      <meta name="description" content="The personal portfolio of Toronto-based visual designer, Joseph Le. A selection of works ranging from print to web." />
+      <meta name="google-site-verification" content="vEgGmDUXGiEe_ftXmQZObKJzX4XnqXR9MfsY7Ng5648" />
+      <meta name="google-site-verification" content="vEgGmDUXGiEe_ftXmQZObKJzX4XnqXR9MfsY7Ng5648" />
+    {{/if}}
+    {{#if about-active}}
+      <title>Joseph Le - About Me</title>
+      <meta name="description" content="I am a visual designer from Toronto. I am an aspiring entrepreneur, storyteller,
+      and pixel pusher."/>
+    {{/if}}
+    {{#if project-active}}
+      <title>Joseph Le - {{name}} Portfolio Project</title>
+      <meta name="description" content="{{blurb}}" />
+    {{/if}}
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <script type="text/javascript" src="js/vendor.js"></script>
@@ -17,10 +31,6 @@
 
     {{#if about-active}}
       {{> about-content}}
-    {{/if}}
-
-    {{#if contact-active}}
-      {{> contact-content}}
     {{/if}}
 
     {{#if project-active}}

@@ -17,7 +17,11 @@ body {
 }
 
 main { //set font
-  padding: 30px 0;
+  padding: $default-content-margin 0;
+
+  @include media($bp12) {
+    padding: $mobile-content-padding 0;
+  }
 }
 
 *, *:before, *:after {

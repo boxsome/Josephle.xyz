@@ -167,6 +167,11 @@
   }
 
   @include media($project-square-dimension*2 + $default-content-margin*3) {
+
+    &__wrapper {
+      padding: 0 $mobile-content-padding;
+    }
+
     &__project {
 
       &:nth-child(1) {
@@ -174,7 +179,7 @@
       }
 
       &:nth-child(n + 2) {
-        margin: $default-content-margin 0 0;
+        margin: $mobile-content-padding 0 0;
       }
 
     }
@@ -184,11 +189,15 @@
   @include media($bp16) {
     &__project {
       height: 100%;
-      @include calc(width, "100% - (#{$default-content-margin}*2)");
+      width: 100%;
 
       &__img {
         padding-top: 100%;
       }
+    }
+
+    &__overlay {
+      display: none;
     }
 
   }

@@ -23,7 +23,10 @@ $(document).ready(function() {
   }
 
   function toggleStickyHeader() {
-    $header.toggleClass("hidden", false).toggleClass("fixed");
+    //$header.toggleClass("hidden", false).toggleClass("fixed");
+    $header.toggleClass("fixed");
+    $("main").css("margin-top", "70px");
+    $header.css("height", "70px");
     headerToggled = true;
   }
 
@@ -31,7 +34,10 @@ $(document).ready(function() {
     //we want to handle scroll down immediately
     var newPos = $(window).scrollTop();
     if (headerToggled && curPos < newPos && newPos > scrollThreshold) { //scroll down past header
-      $header.toggleClass("hidden").toggleClass("fixed", false);
+      //$header.toggleClass("hidden").toggleClass("fixed", false);
+      //$("main").css("margin-top", "70px");
+      $header.toggleClass("fixed", false);
+      $("main").css("margin-top", "");
       headerToggled = false;
       scrollTimeout = setTimeout(toggleStickyHeader, 2000);
     }
@@ -41,7 +47,9 @@ $(document).ready(function() {
     }
     else if (($header.is(".fixed") || $header.is(".hidden")) && newPos === 0) {
       $header.toggleClass("hidden", false).toggleClass("fixed", false);
-      headerToggled = false;
+      $("main").css("margin-top", "");
+      headerToggled = true;
+      $header.css("height", "");
     }
     else if (scrollTimeout) {
       clearTimeout(scrollTimeout);

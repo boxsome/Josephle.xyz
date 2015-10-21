@@ -1,4 +1,5 @@
 .footer {
+  $footer-bottom-padding:         40px;
   $logo-height:                   36px;
   $logo-width:                    36px;
   $social-media-square-dimension: 32px;
@@ -8,27 +9,27 @@
   background-color: white;
   border-top: $default-content-border;
   clear: both;
-  height: $footer-height;
+  height: auto;
   font-family: $karla;
   overflow: hidden;
   width: 100%;
 
   &__wrapper {
-    margin: 0 auto;
     height: 100%;
+    margin: 0 auto;
     width: $main-width;
   }
 
   &__left {
     float: left;
     height: 100%;
-    margin-top: $default-content-margin;
+    margin: $default-content-margin 0 $footer-bottom-padding;
   }
 
   &__right {
     float: right;
     height: 100%;
-    margin-top: $default-content-margin;
+    margin: $default-content-margin 0 $footer-bottom-padding;
   }
 
   &__heading {
@@ -49,6 +50,7 @@
   }
 
   &__copyright {
+    color: $joseph-darkblue;
     font-size: 1rem;
     margin-top: 10px;
   }
@@ -156,7 +158,34 @@
   }
 
   @include media($bp8) { //no footer on mobile
-    display: none;
+
+    &__wrapper {
+      padding: $default-content-margin;
+      width: 100%;
+    }
+
+    &__left, &__right {
+      margin: 0;
+    }
+
+  }
+
+  @include media($bp11) {
+
+    &__wrapper {
+      padding: $mobile-content-padding;
+    }
+
+    &__left {
+      float: none;
+      margin: 0;
+      width: 100%;
+    }
+
+    &__right {
+      display: none;
+    }
+
   }
 
 }
