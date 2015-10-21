@@ -61,6 +61,14 @@ function livereloadChanged(file) {
   livereload.changed(file.path);
 }
 
+function escapeRegExp(string) {
+  return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
+function replaceAll(string, find, replace) {
+  return string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+
 //equality helper for handlebars
 function eq (lval, rval, options) {
   if (lval === rval) return options.fn();
@@ -225,7 +233,7 @@ gulp.task("projects:home", function() {
       str;
 
     projectData["name"] = element;
-    projectData["link"] = element.replace(" ", "-");
+    projectData["link"] = replaceAll(element, " ", "-");
     projectData["img"] = "images/" + element + "/thumbnail.png";
     projectData["blurb"] = fs.readFileSync(PATH_SRC_PROJECTS + element + "/blurb.txt", "utf8");
     if (fs.existsSync(PATH_SRC_PROJECTS + element + "/icons.json")) {
@@ -281,7 +289,7 @@ gulp.task("projects:pages", function() {
         if (fs.existsSync(PATH_SRC_PROJECTS + parentDirectoryName + "/icons.json")) {
           iconsJson = require(PATH_SRC_PROJECTS + parentDirectoryName + "/icons.json"),
               str = iconsJson["icons"].join(",");
-          json["icons"] = str.toLowerCase().replace(" ", "-").split(",");
+          json["icons"] = replaceAll(str.toLowerCase(), " ", "-").split(",");
         }
         console.log(json);
       return gulp.plumbedSrc([
@@ -292,12 +300,11 @@ gulp.task("projects:pages", function() {
 
         .pipe(rename(function(path){
           path.extname = ".html";
-          path.basename = parentDirectoryName.replace(" ", "-");
+          path.basename = replaceAll(parentDirectoryName, " ", "-");
         }))
 
         .pipe(gulp.dest(PATH_BUILD_HTML));
     }))
-
 
     .pipe(rename(function(path){
       path.extname = ".html";
