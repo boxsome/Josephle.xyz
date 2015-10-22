@@ -45,7 +45,9 @@ var _               = require('lodash-node'),
       batch: ["./src/handlebars/partials/"],
       helpers: {
         eq: eq,
-        isMod0: isMod0
+        isMod0: isMod0,
+        plus1: plus1,
+        replaceSpaces: replaceSpaces
       }
     };
 
@@ -79,6 +81,16 @@ function eq (lval, rval, options) {
 function isMod0 (val, divider, options) {
   if (val % divider === 0) return options.fn();
   else return options.inverse();
+}
+
+//plus one handlebars helper
+function plus1 (val) {
+  return parseInt(val) + 1;
+}
+
+//handlebars helper replace space with dash
+function replaceSpaces(val) {
+  return replaceAll(val, " ", "-");
 }
 
 // create error-handling gulp.src replacement
@@ -215,7 +227,7 @@ gulp.task("projects:images", function() {
     PATH_SRC_PROJECTS + "*/images/**/*"
     ])
     .pipe(rename(function (path) {
-        path.dirname = path.dirname.replace("images", "");
+        path.dirname = replaceAll(path.dirname.replace("images", ""), " ", "-");
         return path;
     }))
     .pipe(gulp.dest(PATH_BUILD_IMG));
@@ -234,7 +246,7 @@ gulp.task("projects:home", function() {
 
     projectData["name"] = element;
     projectData["link"] = replaceAll(element, " ", "-");
-    projectData["img"] = "images/" + element + "/thumbnail.png";
+    projectData["img"] = "images/" + replaceAll(element, " ", "-") + "/thumbnail.png";
     projectData["blurb"] = fs.readFileSync(PATH_SRC_PROJECTS + element + "/blurb.txt", "utf8");
     if (fs.existsSync(PATH_SRC_PROJECTS + element + "/icons.json")) {
       iconsJson = require(PATH_SRC_PROJECTS + element + "/icons.json"),
@@ -275,13 +287,13 @@ gulp.task("projects:pages", function() {
         }).sort(); //we only want images in the format Image1, Image2, etc.
 
         json["project-active"] = true;
-        json["description"] = file.contents.toString().split("\r\n\r\n"); //split into paragraphs
+        json["description"] = file.contents.toString(); //split into paragraphs
         json["name"] = parentDirectoryName;
         json["img"] = [];
         json["blurb"] = fs.readFileSync(PATH_SRC_PROJECTS + parentDirectoryName + "/blurb.txt", "utf8");
 
         imageNames.forEach(function(val) {
-          var filePath = "images/" + parentDirectoryName + "/" + val;
+          var filePath = "images/" + replaceAll(parentDirectoryName, " ", "-") + "/" + val;
           console.log(filePath);
           json["img"].push(filePath);
         });

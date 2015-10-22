@@ -15,7 +15,9 @@
     {{/if}}
     {{#if project-active}}
       <title>Joseph Le - {{name}} Portfolio Project</title>
-      <meta name="description" content="{{blurb}}" />
+      <meta id="project-description" name="description" content="{{blurb}}" itemprop="description"/>
+      <meta id="project-creator" itemprop="creator" content="Joseph Le"/>
+      <link id="project-thumbnail" itemprop="thumbnailUrl" href="http://josephle.xyz/images/{{replaceSpaces name}}/thumbnail.png" />
     {{/if}}
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">

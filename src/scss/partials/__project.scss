@@ -2,6 +2,10 @@
   margin: 0 auto;
   width: $main-width;
 
+  h4 {
+    margin: 0;
+  }
+
   &__meta {
     background-color: white;
     border: $default-content-border;

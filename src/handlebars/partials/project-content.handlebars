@@ -1,25 +1,23 @@
-<main class="project">
+<main class="project" itemscope itemtype="http://schema.org/CreativeWork" itemref="project-description project-creator project-thumbnail">
   <div class="project__meta">
     <div class="project__meta__heading">
-      <h2 class="project__meta__heading__name">{{name}}</h2>
+      <h2 class="project__meta__heading__name" itemprop="name">{{name}}</h2>
       {{~#if icons~}}
       <div class="project__meta__heading__icons">
         {{~#each icons~}}
         <i class="project__meta__heading__icons__item project-icon project-icon--{{this}} blue">
-          <div class="project-icon-tooltip">{{this}}</div>
+          <div class="project-icon-tooltip" itemprop="genre">{{this}}</div>
         </i>
         {{~/each~}}
       </div>
       {{~/if~}}
     </div>
     <div class="project__meta__description">
-      {{~#each description}}
-        <p>{{this}}</p>
-      {{~/each~}}
+      {{{description}}}
     </div>
   </div>
   {{#each img}}
-    <img class="project__img" src="{{this}}" />
+    <img class="project__img" src="{{this}}" itemprop="image" alt="{{name}} Project Image {{plus1 @index}}"/>
   {{/each}}
 
 </main>
