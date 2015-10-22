@@ -47,7 +47,8 @@ var _               = require('lodash-node'),
         eq: eq,
         isMod0: isMod0,
         plus1: plus1,
-        replaceSpaces: replaceSpaces
+        replaceSpaces: replaceSpaces,
+        replaceDashes: replaceDashes
       }
     };
 
@@ -91,6 +92,11 @@ function plus1 (val) {
 //handlebars helper replace space with dash
 function replaceSpaces(val) {
   return replaceAll(val, " ", "-");
+}
+
+//handlebars helper to replace dashes with space
+function replaceDashes(val) {
+  return replaceAll(val, "-", " ");
 }
 
 // create error-handling gulp.src replacement
