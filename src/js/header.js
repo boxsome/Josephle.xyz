@@ -12,7 +12,6 @@ $(document).ready(function() {
     scrollTimeout,
     curPos = $(window).scrollTop(),
     $header = $(".header"),
-    scrollThreshold = $header.height() + parseInt($("main").css("padding-top").replace("px", "")),
     delay = 1000;
 
 
