@@ -41,4 +41,26 @@
       margin: $default-content-margin 0;
     }
   }
+
+  @include media($bp8) {
+    min-height: none;
+    padding: $default-content-margin;
+    width: 100%;
+
+    &__img {
+      display: block;
+      float: none;
+      width: 100%;
+    }
+
+    &__meta {
+      display: block;
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  @include media($bp12) {
+    padding: $mobile-content-padding;
+  }
 }
