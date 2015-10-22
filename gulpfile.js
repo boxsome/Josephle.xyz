@@ -275,7 +275,7 @@ gulp.task("projects:pages", function() {
         }).sort(); //we only want images in the format Image1, Image2, etc.
 
         json["project-active"] = true;
-        json["description"] = file.contents.toString();
+        json["description"] = file.contents.toString().split("\r\n\r\n"); //split into paragraphs
         json["name"] = parentDirectoryName;
         json["img"] = [];
         json["blurb"] = fs.readFileSync(PATH_SRC_PROJECTS + parentDirectoryName + "/blurb.txt", "utf8");

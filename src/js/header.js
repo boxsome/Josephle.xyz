@@ -8,11 +8,12 @@
  */
 'use strict';
 $(document).ready(function() {
-  var headerToggled = true,
+  var headerToggled = false,
     scrollTimeout,
     curPos = $(window).scrollTop(),
     $header = $(".header"),
-    scrollThreshold = $header.height() + parseInt($("main").css("padding-top").replace("px", ""));
+    scrollThreshold = $header.height() + parseInt($("main").css("padding-top").replace("px", "")),
+    delay = 1000;
 
 
   function handleScroll() {
@@ -33,27 +34,24 @@ $(document).ready(function() {
   $(window).scroll(function() {
     //we want to handle scroll down immediately
     var newPos = $(window).scrollTop();
-    if (headerToggled && curPos < newPos && newPos > scrollThreshold) { //scroll down past header
-      //$header.toggleClass("hidden").toggleClass("fixed", false);
-      //$("main").css("margin-top", "70px");
-      $header.toggleClass("fixed", false);
-      $("main").css("margin-top", "");
-      headerToggled = false;
-      scrollTimeout = setTimeout(toggleStickyHeader, 2000);
-    }
-    else if (!headerToggled && (curPos > newPos || $(window).scrollTop() + $(window).height() >= $(document).height())) { //scroll up or hit bottom
+    if (!headerToggled && (curPos > newPos || $(window).scrollTop() + $(window).height() >= $(document).height())) { //scroll up or hit bottom
       toggleStickyHeader();
       clearTimeout(scrollTimeout);
     }
     else if (($header.is(".fixed") || $header.is(".hidden")) && newPos === 0) {
       $header.toggleClass("hidden", false).toggleClass("fixed", false);
       $("main").css("margin-top", "");
-      headerToggled = true;
+      headerToggled = false;
       $header.css("height", "");
     }
-    else if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-      if (!headerToggled) scrollTimeout = setTimeout(toggleStickyHeader, 2000);
+    else if (curPos < newPos) {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      $header.toggleClass("fixed", false);
+      $("main").css("margin-top", "");
+      headerToggled = false;
+      scrollTimeout = setTimeout(toggleStickyHeader, delay);
     }
     curPos = newPos;
   });

@@ -12,7 +12,11 @@
       </div>
       {{~/if~}}
     </div>
-    <div class="project__meta__description">{{description}}</div>
+    <div class="project__meta__description">
+      {{~#each description}}
+        <p>{{this}}</p>
+      {{~/each~}}
+    </div>
   </div>
   {{#each img}}
     <img class="project__img" src="{{this}}" />
