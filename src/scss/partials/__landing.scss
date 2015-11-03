@@ -186,7 +186,15 @@
 
   }
 
+  @include media($bp12) {
+    //disable overlay on projects
+    &__project__overlay {
+      display: none;
+    }
+  }
+
   @include media($bp16) {
+
     &__project {
       height: 100%;
       width: 100%;
@@ -194,10 +202,6 @@
       &__img {
         padding-top: 100%;
       }
-    }
-
-    &__overlay {
-      display: none;
     }
 
   }

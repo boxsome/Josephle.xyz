@@ -14,13 +14,27 @@ body {
   font-style: normal;
   font-weight: normal;
   overflow-y: scroll;
+
+  &.unscrollable {
+    overflow: hidden;
+  }
 }
 
 main { //set font
   padding: $default-content-margin 0;
+  position: relative;
 
   @include media($bp12) {
     padding: $mobile-content-padding 0;
+
+    &.menu-active .menu-overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width:100%;
+    }
   }
 }
 

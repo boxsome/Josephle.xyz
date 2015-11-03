@@ -25,20 +25,22 @@
     <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
-  {{> header}}
+    {{> header}}
 
-    {{#if landing-active}}
-      {{> landing-content}}
-    {{/if}}
+      {{#if landing-active}}
+        {{> landing-content}}
+      {{/if}}
 
-    {{#if about-active}}
-      {{> about-content}}
-    {{/if}}
+      {{#if about-active}}
+        {{> about-content}}
+      {{/if}}
 
-    {{#if project-active}}
-      {{> project-content}}
-    {{/if}}
+      {{#if project-active}}
+        {{> project-content}}
+      {{/if}}
 
-  {{> footer}}
+      <div class="menu-overlay"></div>
+    </main>
+    {{> footer}}
   </body>
 </html>
