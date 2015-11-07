@@ -289,19 +289,29 @@ gulp.task("projects:pages", function() {
         absPathSplit = absPath.split("\\"),
         parentDirectoryName = absPathSplit[absPathSplit.length - 2],
         imageNames = fs.readdirSync(absPathSplit.slice(0, absPathSplit.length - 1).join("\\") + "\\images").filter(function (name) {
-          return name.match(/^Image\d/);
-        }).sort(); //we only want images in the format Image1, Image2, etc.
+          return name.match(/^Image[1-9][0-9]*-.*/); //we want to capture files like Image1-left, Image1-right, etc. allows us to append classes to the images
+        }).sort(function (a, b) {
+          var aNum = a.match(/[1-9][0-9]*/)[0],
+              bNum = b.match(/[1-9][0-9]*/)[0];
+          //we want to sort purely by the number in the string
+          return aNum - bNum;
+
+        }); //we only want images in the format Image1, Image2, etc. supporting up to Image99
 
         json["project-active"] = true;
         json["description"] = file.contents.toString(); //split into paragraphs
         json["name"] = parentDirectoryName;
         json["img"] = [];
+        json["img-class"] = [];
         json["blurb"] = fs.readFileSync(PATH_SRC_PROJECTS + parentDirectoryName + "/blurb.txt", "utf8");
 
         imageNames.forEach(function(val) {
-          var filePath = "images/" + replaceAll(parentDirectoryName, " ", "-") + "/" + val;
+          var filePath = "images/" + replaceAll(parentDirectoryName, " ", "-") + "/" + val,
+              obj = {};
           console.log(filePath);
-          json["img"].push(filePath);
+          obj["link"] = filePath;
+          obj["class"] = val.substring(val.indexOf("-") + 1, val.indexOf(".")); //get the portion after "-" which indicates the class
+          json["img"].push(obj);
         });
 
         if (fs.existsSync(PATH_SRC_PROJECTS + parentDirectoryName + "/icons.json")) {

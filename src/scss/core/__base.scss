@@ -1,5 +1,13 @@
-html, body {
+html {
   height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative; //so child elements can inherit height
+}
+
+html, body {
   width: 100%;
 }
 
@@ -18,6 +26,20 @@ body {
   &.unscrollable {
     overflow: hidden;
   }
+
+  .content-overlay {
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width:100%;
+
+    &.active {
+      display: block;
+    }
+  }
 }
 
 main { //set font
@@ -26,15 +48,6 @@ main { //set font
 
   @include media($bp12) {
     padding: $mobile-content-padding 0;
-
-    &.menu-active .menu-overlay {
-      background-color: rgba(0, 0, 0, 0.85);
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width:100%;
-    }
   }
 }
 

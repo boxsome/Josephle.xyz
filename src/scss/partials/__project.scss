@@ -1,5 +1,8 @@
 .project {
+  $column-width: ($default-content-width - $default-content-margin)/2;
+
   margin: 0 auto;
+  overflow: auto;
   width: $main-width;
 
   h4 {
@@ -58,6 +61,37 @@
 
   }
 
+  &__images {
+    margin-left: 400px;
+    width: $default-content-width;
+
+    &__item {
+      border: $default-content-border;
+      //display: inline-block;
+      height: auto;
+      //vertical-align: top;
+
+      &:nth-last-of-type(n+2) {
+        margin-bottom: $default-content-margin;
+      }
+
+      &-full {
+        width: 100%;
+      }
+
+      &-left {
+        //margin-right: $default-content-margin;
+        float: left;
+        width: $column-width;
+      }
+
+      &-right {
+        float: right;
+        width: $column-width;
+      }
+    }
+  }
+
   &__img {
     border: $default-content-border;
     height: auto;
@@ -83,6 +117,10 @@
       display: block;
       margin: $default-content-margin auto 0;
     }
+
+    &__images {
+      margin: $default-content-margin auto 0;
+    }
   }
 
   @include media($bp12) {
@@ -95,5 +133,50 @@
     &__img {
       margin-top: $mobile-content-padding;
     }
+
+    &__images {
+      margin-top: $mobile-content-padding;
+      width: 100%;
+
+      &__item {
+        /*stacking code
+        display: block;
+        float: none !important;
+        margin: 0 auto;
+        */
+        &:nth-last-of-type(n+2) {
+          margin-bottom: $mobile-content-padding;
+        }
+
+        &-left, &-right {
+          @include calc(width, "(100% - #{$mobile-content-padding})/2");
+        }
+
+      }
+    }
+  }
+}
+
+//modal-image
+
+.modal-image-container {
+  left: $mobile-content-padding;
+  height: 100vh;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &:before { //vertical alignment helper
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .modal-image {
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    @include calc(width, "100% - (#{$mobile-content-padding}*2)");
   }
 }

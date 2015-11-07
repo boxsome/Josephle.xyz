@@ -7,39 +7,43 @@
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
-  <loc>http://josephle.xyz/</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/</loc>
+  <lastmod>2015-11-04T19:18:46+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/home</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/home</loc>
+  <lastmod>2015-11-04T19:18:46+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/about</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/about</loc>
+  <lastmod>2015-11-04T19:11:52+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/Boost</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/Boost</loc>
+  <lastmod>2015-11-04T20:13:34+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/Boxnest</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/Boxnest</loc>
+  <lastmod>2015-11-04T19:11:52+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/Muse</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/Game-of-Thrones</loc>
+  <lastmod>2015-11-04T19:11:52+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/San-Francisco</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/Muse</loc>
+  <lastmod>2015-11-04T19:11:52+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/Zephyr</loc>
-  <lastmod>2015-10-20T23:16:27+00:00</lastmod>
+  <loc>https://josephle.xyz/San-Francisco</loc>
+  <lastmod>2015-11-04T19:11:52+00:00</lastmod>
 </url>
 <url>
-  <loc>http://josephle.xyz/files/Resume_Joseph.pdf</loc>
-  <lastmod>2015-10-18T21:08:44+00:00</lastmod>
+  <loc>https://josephle.xyz/Zephyr</loc>
+  <lastmod>2015-11-04T19:11:52+00:00</lastmod>
+</url>
+<url>
+  <loc>https://josephle.xyz/files/Resume_Joseph.pdf</loc>
+  <lastmod>2015-11-04T14:18:55+00:00</lastmod>
 </url>
 </urlset>

@@ -16,8 +16,9 @@
       {{{description}}}
     </div>
   </div>
-  {{#each img}}
-    <img class="project__img" src="{{this}}" itemprop="image" alt="{{name}} Project Image {{plus1 @index}}"/>
-  {{/each}}
-
-{{> project-nav}}
+  <div class="project__images">
+    {{~#each img~}}
+      <img class="project__images__item project__images__item-{{this.class}}" src="{{this.link}}" itemprop="image" alt="{{../name}} Project Image {{plus1 @index}}"/>
+    {{~/each~}}
+  </div>
+</main>

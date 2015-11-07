@@ -23,11 +23,13 @@ $(document).ready(function() {
   }
 
   function toggleStickyHeader() {
-    //$header.toggleClass("hidden", false).toggleClass("fixed");
-    $header.toggleClass("fixed");
-    $("main").css("margin-top", "70px");
-    $header.css("height", "70px");
-    headerToggled = true;
+    //can't activate when the overlay is active
+    if ($(".content-overlay.active").length == 0) {
+      $header.toggleClass("fixed");
+      $("main").css("margin-top", "70px");
+      $header.css("height", "70px");
+      headerToggled = true;
+    }
   }
 
   $(window).scroll(function() {
