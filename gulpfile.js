@@ -56,8 +56,8 @@ function isDev(env) {
   return ((env === null) || (env === "dev"));
 }
 
-function isRelease(release) {
-  return (release === true);
+function isRelease() {
+  return process.env.NODE_ENV === "production";
 }
 
 function livereloadChanged(file) {
@@ -134,7 +134,7 @@ gulp.task("about", function() {
 
 gulp.task("build", function () {
   var deferred = q.defer();
-  gulpRunSequence("clean", ["img", "js", "sass", "static", "fonts", "files", "projects", "about", "css"], "watch", function () {
+  gulpRunSequence("clean", ["js", "sass", "static", "fonts", "files", "html", "about", "img"], "watch", function () {
     deferred.resolve();
   });
   return deferred.promise;
@@ -143,13 +143,6 @@ gulp.task("build", function () {
 gulp.task("clean", function () {
   return gulp.plumbedSrc(PATH_BUILD, { read: false })
     .pipe(plugins.rimraf());
-});
-
-gulp.task("css", function() {
-  return gulp.plumbedSrc([
-      PATH_SRC_VENDOR + "normalize-css/normalize.css"
-  ])
-  .pipe(gulp.dest(PATH_BUILD_CSS));
 });
 
 // default task
@@ -169,20 +162,15 @@ gulp.task("fonts", function() {
   .pipe(gulp.dest(PATH_BUILD_FONTS));
 });
 
-gulp.task("html", function () {
-  return gulp.plumbedSrc([
-      PATH_SRC_HTML + "**/*.html"
-    ])
-    .pipe(gulp.dest(PATH_BUILD_HTML));
-});
+gulp.task("html", ["about", "projects:pages", "projects:home"]); //convenience task to build all html
 
-gulp.task("img", ["img:common"]);
+gulp.task("img", ["img:common", "projects:images"]); //convenience task to build all images
 
 gulp.task("img:common", function (release) {
   return gulp.plumbedSrc([
       PATH_SRC_IMG + "**/*"
     ])
-    .pipe(plugins.if(isRelease(release), plugins.imagemin({
+    .pipe(plugins.if(isRelease(), plugins.imagemin({
       optimizationLevel: 2,
       progressive: true,
       interlaced: true,
@@ -197,7 +185,7 @@ gulp.task("img:modules", function (release) {
       PATH_SRC_MODULES + "**/*.png",
       PATH_SRC_MODULES + "**/*.svg"
     ])
-    .pipe(plugins.if(isRelease(release), plugins.imagemin({
+    .pipe(plugins.if(isRelease(), plugins.imagemin({
       optimizationLevel: 2,
       progressive: true,
       interlaced: true,
@@ -212,9 +200,10 @@ gulp.task("js:main", function (release) {
   return gulp.plumbedSrc([
       PATH_SRC_JS + "**/*.js"
     ])
-    .pipe(plugins.if(!isRelease(release), plugins.sourcemaps.init()))
+    .pipe(plugins.if(!isRelease(), plugins.sourcemaps.init()))
     .pipe(plugins.concat("main.js"))
-    .pipe(plugins.if(!isRelease(release), plugins.sourcemaps.write("./")))
+    .pipe(plugins.if(!isRelease(), plugins.sourcemaps.write("./")))
+    .pipe(plugins.if(isRelease(), plugins.uglify()))
     .pipe(gulp.dest(PATH_BUILD_JS));
 });
 
@@ -223,10 +212,11 @@ gulp.task("js:vendor", function () {
       PATH_SRC_JS_VENDOR + "jquery/dist/jquery.js",
     ])
     .pipe(plugins.concat("vendor.js"))
+    .pipe(plugins.if(isRelease(), plugins.uglify()))
     .pipe(gulp.dest(PATH_BUILD_JS));
 });
 
-gulp.task("projects", ["projects:images", "projects:home", "projects:pages"]);
+gulp.task("projects", ["projects:images", "projects:home", "projects:pages"]); //convenience task to build all project related things
 
 gulp.task("projects:images", function() {
   return gulp.plumbedSrc([
@@ -236,6 +226,12 @@ gulp.task("projects:images", function() {
         path.dirname = replaceAll(path.dirname.replace("images", ""), " ", "-");
         return path;
     }))
+    .pipe(plugins.if(isRelease(), plugins.imagemin({
+      optimizationLevel: 2,
+      progressive: true,
+      interlaced: true,
+      multipass: true
+    })))
     .pipe(gulp.dest(PATH_BUILD_IMG));
 });
 
@@ -346,14 +342,16 @@ gulp.task("projects:pages", function() {
 
 gulp.task("sass", function (release) {
   return gulp.plumbedSrc([
-      PATH_SRC_SASS + "**/*.scss"
+      PATH_SRC_SASS + "**/*.scss",
+      PATH_SRC_VENDOR + "normalize-css/normalize.css"
     ])
-    .pipe(plugins.if(!isRelease(release), plugins.sourcemaps.init()))
-    .pipe(plugins.sass({ 
+    .pipe(plugins.if(!isRelease(), plugins.sourcemaps.init()))
+    .pipe(plugins.if("**/*.scss", plugins.sass({
       outputStyle: "nested"
-    }))
-    .pipe(plugins.if(isRelease(release), plugins.minifyCss({ rebase: false })))
-    .pipe(plugins.if(!isRelease(release), plugins.sourcemaps.write("./")))
+    })))
+    .pipe(plugins.concat("main.css"))
+    .pipe(plugins.if(isRelease(), plugins.minifyCss({ rebase: false })))
+    .pipe(plugins.if(!isRelease(), plugins.sourcemaps.write("./")))
     .pipe(gulp.dest(PATH_BUILD_CSS));
 });
 

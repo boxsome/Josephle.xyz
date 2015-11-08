@@ -157,7 +157,7 @@
     }
   }
 
-  @include media($bp8) { //no footer on mobile
+  @include media($bp8) {
 
     &__wrapper {
       padding: $default-content-margin;
@@ -184,6 +184,10 @@
 
     &__right {
       display: none;
+    }
+
+    &__contact-meta__email {
+      margin-top: 8px;
     }
 
   }

@@ -1,13 +1,13 @@
 <main class="project" itemscope itemtype="http://schema.org/CreativeWork" itemref="project-description project-creator project-thumbnail">
   <div class="project__meta">
     <div class="project__meta__heading">
-      <h2 class="project__meta__heading__name" itemprop="name">{{name}}</h2>
+      <h1 class="project__meta__heading__name" itemprop="name">{{name}}</h1>
       {{~#if icons~}}
       <div class="project__meta__heading__icons">
         {{~#each icons~}}
-        <i class="project__meta__heading__icons__item project-icon project-icon--{{this}} blue">
+        <div class="project__meta__heading__icons__item project-icon project-icon--{{this}} blue">
           <div class="project-icon-tooltip" itemprop="genre">{{replaceDashes this}}</div>
-        </i>
+        </div>
         {{~/each~}}
       </div>
       {{~/if~}}

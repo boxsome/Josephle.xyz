@@ -2,26 +2,35 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="twitter:site" content="@boxnest" />
+    <meta name="twitter:creator" content="@le_joseph" />
+    <meta name="twitter:card" content="summary_large_image" />
     {{#if landing-active}}
       <title>Joseph Le - Graphic and Visual Design Portfolio Home Page</title>
       <meta name="description" content="The personal portfolio of Toronto-based visual designer, Joseph Le. A selection of works ranging from print to web." />
       <meta name="google-site-verification" content="vEgGmDUXGiEe_ftXmQZObKJzX4XnqXR9MfsY7Ng5648" />
+      <meta name="twitter:title" content="Joseph Le - Graphic and Visual Design Portfolio Home Page" />
+      <meta name="twitter:description" content="The personal portfolio of Toronto-based visual designer, Joseph Le. A selection of works ranging from print to web." />
+      <meta name="twitter:image" content="https://josephle.xyz/images/Twitter_Card_Home.png" />
     {{/if}}
     {{#if about-active}}
       <title>Joseph Le - About Me</title>
-      <meta name="description" content="I am a visual designer from Toronto. I am an aspiring entrepreneur, storyteller,
-      and pixel pusher."/>
+      <meta name="description" content="I am a visual designer from Toronto. I am an aspiring entrepreneur, storyteller, and pixel pusher."/>
+      <meta name="twitter:title" content="Joseph Le - About Me" />
+      <meta name="twitter:description" content="I am a visual designer from Toronto. I am an aspiring entrepreneur, storyteller, and pixel pusher." />
+      <meta name="twitter:image" content="https://josephle.xyz/images/About_Temp_Image.png" />
     {{/if}}
     {{#if project-active}}
       <title>Joseph Le - {{name}} Portfolio Project</title>
       <meta id="project-description" name="description" content="{{blurb}}" itemprop="description"/>
       <meta id="project-creator" itemprop="creator" content="Joseph Le"/>
-      <link id="project-thumbnail" itemprop="thumbnailUrl" href="http://josephle.xyz/images/{{replaceSpaces name}}/thumbnail.png" />
+      <meta name="twitter:title" content="Joseph Le - {{name}} Portfolio Project" />
+      <meta name="twitter:description" content="{{blurb}}" />
+      <meta name="twitter:image" content="" />
+      <link id="project-thumbnail" itemprop="thumbnailUrl" href="https://josephle.xyz/images/{{replaceSpaces name}}/thumbnail.png" />
     {{/if}}
-    <link href="css/normalize.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <script type="text/javascript" src="js/vendor.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
     {{> header}}
@@ -39,5 +48,9 @@
       {{/if}}
     {{> footer}}
     <div class="content-overlay"><div class="modal-image-container"></div></div>
+
+    <!-- loading script here for performance boost -->
+    <script type="text/javascript" src="js/vendor.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
