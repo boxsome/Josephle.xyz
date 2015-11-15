@@ -1,25 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8">
     <meta name="twitter:site" content="@boxnest" />
     <meta name="twitter:creator" content="@le_joseph" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_us" />
     {{#if landing-active}}
       <title>Joseph Le - Graphic and Visual Design Portfolio Home Page</title>
       <meta name="description" content="The personal portfolio of Toronto-based visual designer, Joseph Le. A selection of works ranging from print to web." />
       <meta name="google-site-verification" content="vEgGmDUXGiEe_ftXmQZObKJzX4XnqXR9MfsY7Ng5648" />
       <meta name="twitter:title" content="Joseph Le - Graphic and Visual Design Portfolio Home Page" />
       <meta name="twitter:description" content="The personal portfolio of Toronto-based visual designer, Joseph Le. A selection of works ranging from print to web." />
-      <meta name="twitter:image" content="https://josephle.xyz/images/Twitter_Card_Home.png" />
+      <meta name="twitter:image" content="https://josephle.xyz/images/Twitter_Home.png" />
+      <meta property="og:title" content="Joseph Le - Graphic and Visual Design Portfolio Home Page" />
+      <meta property="og:url" content="https://josephle.xyz" />
+      <meta property="og:description" content="The personal portfolio of Toronto-based visual designer, Joseph Le. A selection of works ranging from print to web." />
+      <meta property="og:image" content="https://josephle.xyz/images/Facebook_Home.png" />
     {{/if}}
     {{#if about-active}}
       <title>Joseph Le - About Me</title>
       <meta name="description" content="I am a visual designer from Toronto. I am an aspiring entrepreneur, storyteller, and pixel pusher."/>
       <meta name="twitter:title" content="Joseph Le - About Me" />
       <meta name="twitter:description" content="I am a visual designer from Toronto. I am an aspiring entrepreneur, storyteller, and pixel pusher." />
-      <meta name="twitter:image" content="https://josephle.xyz/images/About_Temp_Image.png" />
+      <meta name="twitter:image" content="https://josephle.xyz/images/About_Image.png" />
+      <meta property="og:title" content="Joseph Le - About Me" />
+      <meta property="og:url" content="https://josephle.xyz/about" />
+      <meta property="og:description" content="I am a visual designer from Toronto. I am an aspiring entrepreneur, storyteller, and pixel pusher." />
+      <meta property="og:image" content="https://josephle.xyz/images/About_Image.png" />
     {{/if}}
     {{#if project-active}}
       <title>Joseph Le - {{name}} Portfolio Project</title>
@@ -27,7 +37,11 @@
       <meta id="project-creator" itemprop="creator" content="Joseph Le"/>
       <meta name="twitter:title" content="Joseph Le - {{name}} Portfolio Project" />
       <meta name="twitter:description" content="{{blurb}}" />
-      <meta name="twitter:image" content="" />
+      <meta name="twitter:image" content="https://josephle.xyz/images/{{replaceSpaces name}}/Twitter_{{replaceSpaces name}}.png" />
+      <meta property="og:title" content="Joseph Le - {{name}} Portfolio Project" />
+      <meta property="og:url" content="https://josephle.xyz/{{replaceSpaces name}}" />
+      <meta property="og:description" content="{{blurb}}" />
+      <meta property="og:image" content="https://josephle.xyz/images/{{replaceSpaces name}}/Facebook_{{replaceSpaces name}}.png" />
       <link id="project-thumbnail" itemprop="thumbnailUrl" href="https://josephle.xyz/images/{{replaceSpaces name}}/thumbnail.png" />
     {{/if}}
     <link href="css/main.css" rel="stylesheet">

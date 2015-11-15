@@ -161,7 +161,7 @@
 //modal-image
 
 .modal-image-container {
-  left: $mobile-content-padding;
+  left: 15vw;
   height: 100vh;
   overflow-y: scroll;
   position: fixed;
@@ -174,10 +174,19 @@
     height: 100%;
     vertical-align: middle;
   }
+
   .modal-image {
     display: inline-block;
     height: auto;
     vertical-align: middle;
-    @include calc(width, "100% - (#{$mobile-content-padding}*2)");
+    width: 70vw;
+  }
+
+  @include media($bp12) {
+    left: $mobile-content-padding;
+    .modal-image {
+      @include calc(width, "100% - (#{$mobile-content-padding}*2)");
+    }
   }
 }
+

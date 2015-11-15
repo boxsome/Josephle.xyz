@@ -17,12 +17,19 @@
       <div class="footer__copyright">&copy; 2015 Joseph Le</div>
     </div>
     <div class="footer__right">
-      <form class="footer__contact-form">
-        <h2 class="footer__contact-form__heading footer__heading">Drop me a message!</h2>
+      <form class="footer__contact-form" method="POST">
+        <div class="footer__contact-form__heading">
+          <h2 class="footer__contact-form__heading--text footer__heading">Drop me a message!</h2>
+          <button class="footer__contact-form__heading--send">Send</button>
+        </div>
+        <input class="footer__contact-form__extra" type="text" name="extra" />
         <input class="footer__contact-form__email input-text" name="email" type="text" placeholder="E-mail"/>
         <input class="footer__contact-form__subject input-text" name="subject" type="text" Placeholder="Subject"/>
-        <textarea class="footer__contact-form__message input-textarea" rows="3" name="Message" type="text" placeholder="Message"></textarea>
+        <textarea class="footer__contact-form__message input-textarea" rows="3" name="message" placeholder="Message"></textarea>
       </form>
+      <div class="footer__confirm">
+
+      </div>
     </div>
   </div>
 </footer>

@@ -40,7 +40,7 @@
 
   }
 
-  &--editorial {
+  &--book-cover {
     height: 20px;
     width: 24px;
     @include retina-image("#{$img-path}/Editorial_White", 100% 100%);

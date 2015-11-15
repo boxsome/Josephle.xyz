@@ -3,10 +3,25 @@
   width: $main-width;
   @include calc(min-height, "100% - (#{$header-height} + #{$footer-height})");
 
-  &__img {
+  &__img__container {
     display: inline-block;
     float: left;
     @include calc(width, "#{$main-width} - (#{$default-content-width} + #{$default-content-margin})");
+    position: relative;
+
+    &-img {
+      width: 100%;
+    }
+
+    &-cred {
+      bottom: 15px;
+      color: white;
+      font-size: 0.75rem;
+      left: 15px;
+      position: absolute;
+      text-decoration: none;
+    }
+
   }
 
   &__meta {
@@ -47,7 +62,7 @@
     padding: $default-content-margin;
     width: 100%;
 
-    &__img {
+    &__img__container {
       display: block;
       float: none;
       width: 100%;

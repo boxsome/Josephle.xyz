@@ -49,6 +49,24 @@
     }
   }
 
+  &__confirm {
+    display: none;
+    text-align: center;
+    width: 100%;
+
+    &--active {
+      display: block;
+    }
+
+    &--error {
+      color: red;
+    }
+
+    &--success {
+      color: green;
+    }
+  }
+
   &__copyright {
     color: $joseph-darkblue;
     font-size: 1rem;
@@ -138,10 +156,31 @@
 
   &__contact-form {
 
+    &__heading {
+      margin: $mobile-content-padding 0;
+
+      &--text {
+        background-color: white;
+        display: inline-block;
+        margin: 0;
+      }
+
+      &--send {
+        background-color: white;
+        border: 0;
+        color: gray;
+        float: right;
+      }
+    }
+
     &__email {
       display: inline-block;
       margin-right: 18px;
       width: 250px;
+    }
+
+    &__extra { //spam prevention
+      display: none;
     }
 
     &__subject {
@@ -155,6 +194,7 @@
       resize: none;
       width: 100%;
     }
+
   }
 
   @include media($bp8) {

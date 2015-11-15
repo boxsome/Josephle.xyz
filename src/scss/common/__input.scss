@@ -44,3 +44,7 @@ $default-input-height: 50px;
     box-shadow: 1px 6px 27px 1px rgba(101,102,101,0.25);
   }
 }
+
+.input-error {
+  border-color: red;
+}

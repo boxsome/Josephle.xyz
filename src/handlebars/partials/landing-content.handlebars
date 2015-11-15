@@ -11,9 +11,9 @@
           {{~#if icons~}}
           <div class="landing__project__icons">
             {{~#each icons~}}
-            <i class="landing__project__icons__item project-icon project-icon--{{this}}">
-              <div class="project-icon-tooltip">{{this}}</div>
-            </i>
+            <div class="landing__project__icons__item project-icon project-icon--{{this}}">
+              <div class="project-icon-tooltip">{{replaceDashes this}}</div>
+            </div>
             {{~/each~}}
           </div>
           {{~/if~}}

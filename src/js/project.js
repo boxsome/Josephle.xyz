@@ -30,7 +30,6 @@ $(document).ready(function() {
 
     //modal view for images on mobile
     $(".project__images__item").click(function() {
-      console.log("CLICKED");
       if ($(window).width() <= mobileWidth) { //only do this for mobile
         var $imgFull = $("<img>", {class: "modal-image", src: $(this).prop("src")});
 
