@@ -41,7 +41,7 @@
     height: $logo-height;
     width: $logo-width;
     @include calc(margin-top, "(#{$header-height} - #{$logo-height})/2");
-    @include retina-image("#{$img-path}/Joseph_Logo", $logo-width $logo-height);
+    //@include retina-image("#{$img-path}/Joseph_Logo", $logo-width $logo-height);
   }
 
   &__name {
@@ -142,7 +142,7 @@
     border-left: $default-content-border;
     border-right: $default-content-border;
     height: 0;
-    left: -142px;
+    left: -141px;
     list-style: none;
     overflow: hidden;
     padding: 0;

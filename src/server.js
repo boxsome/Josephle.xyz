@@ -22,11 +22,11 @@ server.use(express.static(__dirname));
 
 server.post("/send", function(req, res) {
   var mailOptions = {
-    to: "joseph.le14@gmail.com",
-    subject: req.body.subject + " - " + req.body.email,
-    text: req.body.message
-  },
-  resObj = {};
+        to: "joseph.le14@gmail.com",
+        subject: req.body.subject + " - " + req.body.email,
+        text: req.body.message
+      },
+      resObj = {};
 
   res.setHeader('Content-Type', 'application/json');
   console.log(mailOptions);
@@ -48,4 +48,5 @@ server.post("/send", function(req, res) {
 server.listen(port, function() {
   console.log("Server listening!");
 });
+
 

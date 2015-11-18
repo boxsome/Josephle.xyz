@@ -134,6 +134,7 @@ gulp.task("about", function() {
 
 gulp.task("build", function () {
   var deferred = q.defer();
+  console.log(isRelease() + " production");
   gulpRunSequence("clean", ["js", "sass", "static", "fonts", "files", "html", "about", "img"], "watch", function () {
     deferred.resolve();
   });
@@ -237,7 +238,15 @@ gulp.task("projects:images", function() {
 
 gulp.task("projects:home", function() {
   var templateData = {},
-      projectNames = fs.readdirSync(PATH_SRC_PROJECTS);
+      projectNames;
+
+  if (fs.existsSync(PATH_SRC_PROJECTS + "order.json")) {
+    projectNames = require(PATH_SRC_PROJECTS + "order.json");
+    projectNames = projectNames["order"];
+  }
+  else {
+    projectNames = fs.readdirSync(PATH_SRC_PROJECTS);
+  }
 
   templateData["landing-active"] = true;
   templateData["project"] = [];
@@ -259,6 +268,7 @@ gulp.task("projects:home", function() {
   });
 
   console.log(templateData);
+  console.log(projectNames);
   return gulp.plumbedSrc([
       PATH_SRC_HANDLEBARS + "index.handlebars"
     ])

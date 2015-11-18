@@ -17,7 +17,10 @@ $(document).ready(function() {
     //add retina for thumbnails
     if (isHighDensity()) {
       $landingThumbnails = $landingPage.find(".landing__project__img");
-      $landingThumbnails.css("background-image", $(this).css("background-image").replace("thumbnail", "thumbnail_2x"));
+      $landingThumbnails.each(function() {
+        $(this).css("background-image", $(this).css("background-image").replace("thumbnail", "thumbnail_2x"));
+      });
+      //$landingThumbnails.css("background-image", $(this).css("background-image").replace("thumbnail", "thumbnail_2x"));
     }
   }
 });

@@ -10,6 +10,7 @@ $(document).ready(function() {
   //$contentOverlay.height($(document).outerHeight());
 
   $contentOverlay.click(function() {
+    console.log("HELLO " + $(this));
     var $imgFull = $(".modal-image"),
         $mobileMenuActive = $(".header__mobile__nav.active");
 

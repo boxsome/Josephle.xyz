@@ -13,6 +13,7 @@ $(document).ready(function() {
       $header = $(".header");
 
   if ($projectPage.length > 0) {
+    console.log("HI THERE " + $projectPage);
     $projectDesc = $(".project__meta");
     //check if project description would exceed main wrapper
     $(window).scroll(function() {

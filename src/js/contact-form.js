@@ -18,17 +18,17 @@ $(document).ready(function() {
       //basic validation
       if ($subject.val().length === 0) {
         $subject.prop("placeholder", "PLEASE ENTER A SUBJECT");
-        $subject.toggleClass("input-error");
+        $subject.toggleClass("input-error", true);
         sendData = false;
       }
       if ($message.val().length === 0) {
         $message.prop("placeholder", "PLEASE ENTER A MESSAGE");
-        $message.toggleClass("input-error");
+        $message.toggleClass("input-error", true);
         sendData = false;
       }
       if ($email.val().length === 0 || $email.val().indexOf("@") < 0) {
         $email.prop("placeholder", "ENTER AN E-MAIL");
-        $email.toggleClass("input-error");
+        $email.toggleClass("input-error", true);
         sendData = false;
       }
 
@@ -40,7 +40,7 @@ $(document).ready(function() {
             $footerConfirm.toggleClass("footer__confirm--error");
           }
           else if (parseInt(data["status"]) === 1) {
-            $footerConfirm.text("Thank you for your message! I will get back to you shortly.");
+            $footerConfirm.text("Thank you for your message! I will get back to you as soon as I can.");
             $footerConfirm.toggleClass("footer__confirm--success");
           }
           $contactForm.toggle();

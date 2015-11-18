@@ -43,10 +43,10 @@
   &--book-cover {
     height: 20px;
     width: 24px;
-    @include retina-image("#{$img-path}/Editorial_White", 100% 100%);
+    @include retina-image("#{$img-path}/Book_Cover_White", 100% 100%);
 
     &.blue {
-      @include retina-image("#{$img-path}/Editorial_Blue", 100% 100%);
+      @include retina-image("#{$img-path}/Book_Cover_Blue", 100% 100%);
     }
 
     &:before {

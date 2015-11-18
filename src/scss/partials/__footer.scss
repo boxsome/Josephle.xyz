@@ -59,11 +59,11 @@
     }
 
     &--error {
-      color: red;
+      color: $joseph-red;
     }
 
     &--success {
-      color: green;
+      color: $joseph-green;
     }
   }
 
@@ -170,6 +170,10 @@
         border: 0;
         color: gray;
         float: right;
+
+        &:hover {
+          color: $joseph-lightblue;
+        }
       }
     }
 

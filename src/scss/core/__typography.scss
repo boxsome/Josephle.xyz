@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Brandon Grotesque";
-  src: url("#{$font-path}/Brandon_Grotesque/Brandon_bld.otf");
+  src: url("#{$font-path}/Brandon_Grotesque/Brandon_bld.otf"),
+       url("#{$font-path}/Brandon_Grotesque/Brandon_bld.woff");
   font-weight: bold;
   font-style: normal;
 }
@@ -35,7 +36,8 @@
 
 @font-face {
   font-family: "Karla";
-  src: url("#{$font-path}/Karla/Karla-Regular.ttf");
+  src: url("#{$font-path}/Karla/Karla-Regular.ttf"),
+       url("#{$font-path}/Karla/Karla-Regular.woff");
   font-style: normal;
   font-weight: normal;
 }
