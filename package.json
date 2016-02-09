@@ -1,7 +1,7 @@
 {
-  "name": "boxnest-new-site",
+  "name": "Joseph Le Portfolio Site",
   "version": "1.0.0",
-  "description": "Boxnest Website",
+  "description": "Portfolio website for Joseph Le",
   "contributors": [
     {
       "name": "Jan Castor",
@@ -12,7 +12,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://boxsome@bitbucket.org/boxsome/boxnest-new-site.git"
+    "url": "https://boxsome@bitbucket.org/boxsome/JosephLe.xyz.git"
   },
   "main": "gulpfile.js",
   "devDependencies": {
