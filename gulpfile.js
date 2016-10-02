@@ -4,17 +4,13 @@
 var _               = require('lodash-node'),
     fs              = require("fs"),
     gulp            = require("gulp-param")(require("gulp"), process.argv),
-    gulpLoadPlugins = require("gulp-load-plugins"),
+    plugins         = require("gulp-load-plugins")(),
     gulpRunSequence = require("run-sequence"),
     livereload      = require("gulp-livereload"),
     path            = require("path"),
-    plugins         = gulpLoadPlugins(),
     q               = require("q"),
     handlebars      = require("gulp-compile-handlebars"),
-    rename          = require("gulp-rename"),
-    data            = require("gulp-data"),
-    foreach         = require("gulp-foreach"),
-    
+
     // path config
     PATH_ROOT = __dirname + "/",
     PATH_FONTS = PATH_ROOT + "fonts/",
@@ -123,7 +119,7 @@ gulp.task("about", function() {
 
     .pipe(handlebars({ "about-active": true }, handlebarOptions))
 
-    .pipe(rename(function(path){
+    .pipe(plugins.rename(function(path){
       path.extname = ".html";
     }))
 
@@ -223,7 +219,7 @@ gulp.task("projects:images", function() {
   return gulp.plumbedSrc([
     PATH_SRC_PROJECTS + "*/images/**/*"
     ])
-    .pipe(rename(function (path) {
+    .pipe(plugins.rename(function (path) {
         path.dirname = replaceAll(path.dirname.replace("images", ""), " ", "-");
         return path;
     }))
@@ -275,7 +271,7 @@ gulp.task("projects:home", function() {
 
     .pipe(handlebars(templateData, handlebarOptions))
 
-    .pipe(rename(function(path){
+    .pipe(plugins.rename(function(path){
       path.extname = ".html";
     }))
 
@@ -288,7 +284,7 @@ gulp.task("projects:pages", function() {
   return gulp.plumbedSrc([
         PATH_SRC_PROJECTS + "*/description.txt"
     ])
-    .pipe(foreach(function(stream, file) {
+    .pipe(plugins.foreach(function(stream, file) {
       var json = {},
         iconsJson, str,
         absPath = file.path,
@@ -332,7 +328,7 @@ gulp.task("projects:pages", function() {
 
         .pipe(handlebars(json, handlebarOptions))
 
-        .pipe(rename(function(path){
+        .pipe(plugins.rename(function(path){
           path.extname = ".html";
           path.basename = replaceAll(parentDirectoryName, " ", "-");
         }))
@@ -340,7 +336,7 @@ gulp.task("projects:pages", function() {
         .pipe(gulp.dest(PATH_BUILD_HTML));
     }))
 
-    .pipe(rename(function(path){
+    .pipe(plugins.rename(function(path){
       path.extname = ".html";
     }))
 
@@ -360,7 +356,7 @@ gulp.task("sass", function (release) {
       outputStyle: "nested"
     })))
     .pipe(plugins.concat("main.css"))
-    .pipe(plugins.if(isRelease(), plugins.minifyCss({ rebase: false })))
+    .pipe(plugins.if(isRelease(), plugins.cleanCss({ rebase: false })))
     .pipe(plugins.if(!isRelease(), plugins.sourcemaps.write("./")))
     .pipe(gulp.dest(PATH_BUILD_CSS));
 });
