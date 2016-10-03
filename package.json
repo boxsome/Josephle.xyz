@@ -1,6 +1,6 @@
 {
   "name": "JosephLePortfolioSite",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Portfolio website for Joseph Le",
   "contributors": [
     {
@@ -16,9 +16,15 @@
   },
   "main": "gulpfile.js",
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.17.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-2": "^6.17.0",
+    "babel-register": "^6.16.3",
     "bower": "^1.7.9",
     "glob": "^7.1.0",
     "gulp": "~3.9.0",
+    "gulp-babel": "^6.1.2",
     "gulp-cached": "^1.1.0",
     "gulp-clean-css": "^2.0.13",
     "gulp-concat": "^2.6.0",
