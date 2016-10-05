@@ -1,11 +1,11 @@
-'use strict';
+/*eslint-env node*/
+/*eslint no-console: 0 */
+"use strict";
 
-import _ from 'lodash-node';
 import fs from "fs";
 import gulp from "gulp";
 import gulpRunSequence from "run-sequence";
 import livereload from "gulp-livereload";
-import path from "path";
 import q from "q";
 import handlebars from "gulp-compile-handlebars";
 
@@ -29,20 +29,16 @@ const PATH_SRC_JS = `${PATH_SRC}js/`;
 const PATH_SRC_JS_VENDOR = `${PATH_SRC_VENDOR}js/`;
 const PATH_SRC_MODULES = `${PATH_SRC}modules/`;
 const PATH_SRC_HANDLEBARS = `${PATH_SRC}handlebars/`;
-const PATH_SRC_HANDLEBARS_PARTIALS = `${PATH_SRC_HANDLEBARS}partials`;
-const PATH_SRC_JSON = `${PATH_SRC}json/`;
 const PATH_SRC_SASS = `${PATH_SRC}scss/`;
 const PATH_SRC_PROJECTS = `${PATH_ROOT}projects/`;
 
-const isDev = (env) => ((env === null) || (env === "dev"));
-
 const isRelease = () => process.env.NODE_ENV === "production";
 
-const livereloadChanged = (file) => { livereload.changed(file.path); }
+const livereloadChanged = (file) => { livereload.changed(file.path); };
 
 const escapeRegExp = (string) => string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 
-const replaceAll = (string, find, replace) => string.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+const replaceAll = (string, find, replace) => string.replace(new RegExp(escapeRegExp(find), "g"), replace);
 
 //equality helper for handlebars
 const eq = (lval, rval, options) => (lval === rval) ? options.fn() : options.inverse(); 
@@ -79,9 +75,9 @@ gulp.plumbedSrc = (...args) => {
       errorHandler: (error) => {
         console.error.bind(error);
         plugins.notify.onError({
-            title: "Gulp Error",
-            message: "Error: <%= error %>",
-            sound: "Bottle"
+          title: "Gulp Error",
+          message: "Error: <%= error %>",
+          sound: "Bottle"
         })(error);
         this.emit("end");
       }
@@ -140,10 +136,10 @@ gulp.task("html", ["about", "projects:pages", "projects:home"]); //convenience t
 
 gulp.task("img", ["img:common", "projects:images"]); //convenience task to build all images
 
-gulp.task("img:common", (release) => {
+gulp.task("img:common", () => {
   return gulp.plumbedSrc([
-      `${PATH_SRC_IMG}**/*`
-    ])
+    `${PATH_SRC_IMG}**/*`
+  ])
     .pipe(plugins.if(isRelease(), plugins.imagemin({
       optimizationLevel: 2,
       progressive: true,
@@ -153,12 +149,12 @@ gulp.task("img:common", (release) => {
     .pipe(gulp.dest(PATH_BUILD_IMG));
 });
 
-gulp.task("img:modules", (release) => {
+gulp.task("img:modules", () => {
   return gulp.plumbedSrc([
-      `${PATH_SRC_MODULES}**/*.jpg`,
-      `${PATH_SRC_MODULES}**/*.png`,
-      `${PATH_SRC_MODULES}**/*.svg`
-    ])
+    `${PATH_SRC_MODULES}**/*.jpg`,
+    `${PATH_SRC_MODULES}**/*.png`,
+    `${PATH_SRC_MODULES}**/*.svg`
+  ])
     .pipe(plugins.if(isRelease(), plugins.imagemin({
       optimizationLevel: 2,
       progressive: true,
@@ -170,10 +166,10 @@ gulp.task("img:modules", (release) => {
 
 gulp.task("js", ["js:main", "js:vendor"]);
 
-gulp.task("js:main", (release) => {
+gulp.task("js:main", () => {
   return gulp.plumbedSrc([
-      `${PATH_SRC_JS}**/*.js`
-    ])
+    `${PATH_SRC_JS}**/*.js`
+  ])
     .pipe(plugins.babel())
     .pipe(plugins.if(!isRelease(), plugins.sourcemaps.init()))
     .pipe(plugins.concat("main.js"))
@@ -184,8 +180,8 @@ gulp.task("js:main", (release) => {
 
 gulp.task("js:vendor", () => {
   return gulp.plumbedSrc([
-      PATH_SRC_JS_VENDOR + "jquery/dist/jquery.js",
-    ])
+    PATH_SRC_JS_VENDOR + "jquery/dist/jquery.js",
+  ])
     .pipe(plugins.concat("vendor.js"))
     .pipe(plugins.if(isRelease(), plugins.uglify()))
     .pipe(gulp.dest(PATH_BUILD_JS));
@@ -196,10 +192,10 @@ gulp.task("projects", ["projects:images", "projects:home", "projects:pages"]); /
 gulp.task("projects:images", () => {
   return gulp.plumbedSrc([
     `${PATH_SRC_PROJECTS}*/images/**/*`
-    ])
+  ])
     .pipe(plugins.rename((path) => {
-        path.dirname = replaceAll(path.dirname.replace("images", ""), " ", "-");
-        return path;
+      path.dirname = replaceAll(path.dirname.replace("images", ""), " ", "-");
+      return path;
     }))
     .pipe(plugins.if(isRelease(), plugins.imagemin({
       optimizationLevel: 2,
@@ -244,8 +240,8 @@ gulp.task("projects:home", () => {
   console.log(templateData);
   console.log(projectNames);
   return gulp.plumbedSrc([
-      `${PATH_SRC_HANDLEBARS}index.handlebars`
-    ])
+    `${PATH_SRC_HANDLEBARS}index.handlebars`
+  ])
 
     .pipe(handlebars(templateData, handlebarOptions))
 
@@ -260,8 +256,8 @@ gulp.task("projects:home", () => {
 
 gulp.task("projects:pages", () => {
   return gulp.plumbedSrc([
-        PATH_SRC_PROJECTS + "*/description.txt"
-    ])
+    PATH_SRC_PROJECTS + "*/description.txt"
+  ])
     .pipe(plugins.foreach((stream, file) => {
       const json = {};
       const absPath = file.path;
@@ -301,7 +297,7 @@ gulp.task("projects:pages", () => {
       console.log(json);
       return gulp.plumbedSrc([
         PATH_SRC_HANDLEBARS + "index.handlebars"
-        ])
+      ])
         .pipe(handlebars(json, handlebarOptions))
 
         .pipe(plugins.rename((path) => {
@@ -321,11 +317,11 @@ gulp.task("projects:pages", () => {
 
 });
 
-gulp.task("sass", (release) => {
+gulp.task("sass", () => {
   return gulp.plumbedSrc([
-      `${PATH_SRC_SASS}**/*.scss`,
-      `${PATH_SRC_VENDOR}normalize-css/normalize.css`
-    ])
+    `${PATH_SRC_SASS}**/*.scss`,
+    `${PATH_SRC_VENDOR}normalize-css/normalize.css`
+  ])
     .pipe(plugins.if(!isRelease(), plugins.sourcemaps.init()))
     .pipe(plugins.if("**/*.scss", plugins.sass({
       outputStyle: "nested"
@@ -338,11 +334,11 @@ gulp.task("sass", (release) => {
 
 gulp.task("static", () => {
   return gulp.plumbedSrc([
-      `${PATH_ROOT}favicon.ico`,
-      `${PATH_SRC}index.html`,
-      `${PATH_SRC}server.js`,
-      `${PATH_ROOT}sitemap.xml`
-    ])
+    `${PATH_ROOT}favicon.ico`,
+    `${PATH_SRC}index.html`,
+    `${PATH_SRC}server.js`,
+    `${PATH_ROOT}sitemap.xml`
+  ])
     .pipe(gulp.dest(PATH_BUILD));
 });
 

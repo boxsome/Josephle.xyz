@@ -53,7 +53,8 @@
     "node-bourbon": "^4.2.3",
     "node-neat": "^1.7.2",
     "q": "^1.4.1",
-    "run-sequence": "~1.2"
+    "run-sequence": "~1.2",
+    "snazzy": "^5.0.0"
   },
   "engines": {
     "node": ">=0.10",
@@ -65,6 +66,8 @@
     "gulp-rename": "^1.2.2"
   },
   "scripts": {
+    "lint": "cd src/js && ls -1 | xargs eslint && cd ../../",
+    "lint:fix": "cd src/js && ls -1 | xargs eslint --fix ",
     "start": "gulp"
   }
 }
