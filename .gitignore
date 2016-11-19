@@ -3,3 +3,4 @@ node_modules/
 src/vendor
 www/
 projects/
+npm-debug.log

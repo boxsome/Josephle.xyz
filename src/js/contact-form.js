@@ -3,11 +3,12 @@
  *
  * Created by J on 11/14/2015.
  */
-$(document).ready(function() {
+
+$(document).ready(() => {
   var $contactForm = $(".footer__contact-form");
 
   if ($contactForm.is(":visible")) {
-    $contactForm.find(".footer__contact-form__heading--send").click(function(e) {
+    $contactForm.find(".footer__contact-form__heading--send").click((e) => {
       var sendData = true,
           $email = $contactForm.find(".footer__contact-form__email"),
           $subject = $contactForm.find(".footer__contact-form__subject"),
@@ -33,8 +34,7 @@ $(document).ready(function() {
       }
 
       if (sendData) {
-        $.post("api/send", $contactForm.serialize(), function (data) {
-          console.log(data);
+        $.post("api/send", $contactForm.serialize(), (data) => {
           if (parseInt(data["status"]) === 0) { //error
             $footerConfirm.text("There was an error with your message: " + data["error"]);
             $footerConfirm.toggleClass("footer__confirm--error");
@@ -47,8 +47,6 @@ $(document).ready(function() {
           $footerConfirm.toggleClass("footer__confirm--active");
         });
       }
-
     });
-
   }
 });
