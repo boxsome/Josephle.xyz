@@ -8,6 +8,8 @@ import gulpRunSequence from "run-sequence";
 import livereload from "gulp-livereload";
 import q from "q";
 import handlebars from "gulp-compile-handlebars";
+import webpack from 'webpack';
+import webpackConfig from './webpack.config.babel';
 
 const plugins = require("gulp-load-plugins")();
 // path config
@@ -72,7 +74,7 @@ const handlebarOptions = {
 gulp.plumbedSrc = (...args) => {
   return gulp.src.apply(gulp, args)
     .pipe(plugins.plumber({
-      errorHandler: (error) => {
+      errorHandler: function (error) {
         console.error.bind(error);
         plugins.notify.onError({
           title: "Gulp Error",
@@ -104,7 +106,7 @@ gulp.task("about", () => {
 gulp.task("build", () => {
   const deferred = q.defer();
   console.log(isRelease() + " production");
-  gulpRunSequence("clean", ["js", "sass", "static", "fonts", "files", "html", "about", "img"], "watch", () => {
+  gulpRunSequence("clean", ["js", "sass", "static", "fonts", "files", "html", "about", "img"], "webpack", "watch", () => {
     deferred.resolve();
   });
   return deferred.promise;
@@ -180,7 +182,7 @@ gulp.task("js:main", () => {
 
 gulp.task("js:vendor", () => {
   return gulp.plumbedSrc([
-    PATH_SRC_JS_VENDOR + "jquery/dist/jquery.js",
+    PATH_SRC_VENDOR + "jquery/dist/jquery.js",
   ])
     .pipe(plugins.concat("vendor.js"))
     .pipe(plugins.if(isRelease(), plugins.uglify()))
@@ -367,4 +369,22 @@ gulp.task("watch", (watch) => {
       `${PATH_ROOT}favicon.ico`
     ], config, ["static"]).on("change", livereloadChanged);
   }
+});
+
+gulp.task('webpack', (callback) => {
+  var myConfig = Object.create(webpackConfig);
+  myConfig.plugins = [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ];
+
+  // run webpack
+  webpack(myConfig, (err, stats) => {
+    /*if (err) throw new gutil.PluginError('webpack', err);
+    gutil.log('[webpack]', stats.toString({
+      colors: true,
+      progress: true
+    }));*/
+    callback();
+  });
 });

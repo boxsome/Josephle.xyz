@@ -54,7 +54,8 @@
     "node-neat": "^1.7.2",
     "q": "^1.4.1",
     "run-sequence": "~1.2",
-    "snazzy": "^5.0.0"
+    "snazzy": "^5.0.0",
+    "webpack": "^1.13.3"
   },
   "engines": {
     "node": ">=0.10",

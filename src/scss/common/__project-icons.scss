@@ -66,6 +66,32 @@
     }
   }
 
+  &--editorial {
+    height: 20px;
+    width: 24px;
+    @include retina-image("#{$img-path}/Editorial_White", 100% 100%);
+
+    &.blue {
+      @include retina-image("#{$img-path}/Editorial_Blue", 100% 100%);
+    }
+
+    &:before {
+      top: -3px !important; //override before icon positioning because height is different
+    }
+
+    .project-icon-tooltip { //positioning of tooltip
+      left: -26px;
+
+      &:after {
+        left: 33px;
+      }
+
+      &--active {
+        top: -44px !important; //got to account for smaller height
+      }
+    }
+  }
+
   &--illustration {
     height: 22px;
     width: 24px;
