@@ -6,6 +6,7 @@
   $nav-item-horizontal-padding:           15px;
   $nav-item-vertical-padding:             10px;
   $highlight-padding:                     5px;
+  $header-nav-margin-top:                 12px;
 
   background-color: white;
   //box-shadow: -1px 3px 12px 5px rgba(0,0,0,0.2);
@@ -30,6 +31,7 @@
   }
 
   &__wrapper {
+    height: 100%;
     margin: 0 auto;
     width: $main-width;
   }
@@ -45,24 +47,21 @@
   }
 
   &__name {
-    color: $joseph-darkblue;
+    color: $joseph-lightblue;
     display: inline-block;
     font-family: $geomanist;
     font-size: 2rem;
     margin-top: 12px;
     text-decoration: none;
-
-    &:hover {
-      color: $joseph-lightblue;
-    }
   }
 
   &__nav {
     float: right;
-    margin-top: 12px;
+    margin-top: $header-nav-margin-top;
     font-family: $karla;
     font-weight: bold;
     text-transform: capitalize;
+    @include calc(height, "100% - #{$header-nav-margin-top}");
 
     &__item {
       $module: ".header__nav__item";
@@ -70,11 +69,13 @@
       color: $joseph-darkblue;
       display: inline-block;
       font-size: 1.1rem;
+      height: 100%;
       position: relative;
       text-decoration: none;
       padding: $nav-item-vertical-padding $nav-item-horizontal-padding;
 
       &--active {
+        border-bottom: solid 1px $joseph-lightblue;
         color: $joseph-lightblue;
       }
 
