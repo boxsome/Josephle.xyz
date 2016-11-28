@@ -15,6 +15,8 @@ $nav-bg-gray:                     #C2C7C6;
 $footer-bg-gray:                  #EEEFF1;
 $footer-text-gray:                #B0B3B3;
 
+$secondary-text-gray:             #777777;
+
 //paths
 $img-path:                        "../images";
 $font-path:                       "../fonts";
@@ -26,6 +28,8 @@ $header-mobile-height:            66px;
 $footer-height:                   360px;
 $input-text-width:                450px;
 $default-content-width:           800px;
+$alt-content-width:               1000px;
+$default-heading-line-width:      36px;
 
 //padding & margins
 $header-horizontal-padding:       105px;
@@ -76,3 +80,6 @@ $default-content-border:          solid 1px $offgray;
 
 //bourbon/neat values
 $default-feature:                 max-width;
+
+
+$secondary-text-gray:             #777777;

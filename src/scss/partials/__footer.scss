@@ -38,15 +38,7 @@
     position: relative;
     text-transform: uppercase;
 
-    &:before {
-      background-color: $joseph-darkblue;
-      content: "";
-      height: 1px;
-      left: 0;
-      position: absolute;
-      top: -8px;
-      width: 36px;
-    }
+    @include heading-line($joseph-darkblue, -8px, $default-heading-line-width);
   }
 
   &__confirm {

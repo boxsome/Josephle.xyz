@@ -3,3 +3,15 @@
   top: 50%;
   @include transform(translateY(-50%));
 }
+
+@mixin heading-line($color, $top, $width) {
+  &:before {
+    background-color: $color;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: $top;
+    width: $width;
+  }
+}
